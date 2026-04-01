@@ -1,0 +1,53 @@
+version: "3.9"
+
+services:
+
+  # ── Backend Node.js ────────────────────────────────────────────────────────
+  zika-backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: zika-backend
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - NODE_ENV=production
+    expose:
+      - "3001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3001/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+  # ── Frontend React (build statique servi par Nginx) ────────────────────────
+  zika-frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: zika-frontend
+    restart: unless-stopped
+    expose:
+      - "80"
+    depends_on:
+      - zika-backend
+
+  # ── Nginx Reverse Proxy ────────────────────────────────────────────────────
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: zika-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro          # Certificats SSL (Let's Encrypt)
+      - nginx-logs:/var/log/nginx
+    depends_on:
+      - zika-backend
+      - zika-frontend
+
+volumes:
+  nginx-logs:

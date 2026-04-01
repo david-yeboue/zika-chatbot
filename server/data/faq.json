@@ -1,0 +1,56 @@
+[
+  {
+    "theme": "Général",
+    "question": "C'est quoi le portage salarial chez ECT ?",
+    "answer": "Eburnis Conseil & Technologies propose le portage salarial aux entreprises/organismes qui souhaitent optimiser leur gestion administrative et fiscale de leur capital humain pour se consacrer à leur cœur de métier.\n\nLes professionnels en freelance trouvent par notre solution de portage une alternative contractuelle à leur collaboration avec leur employeur/client pour des projets spécifiques.\n\nPour plus d'informations ou obtenir un devis, contactez-nous via le formulaire.",
+    "keywords": ["portage", "salarial", "statut", "freelance"]
+  },
+  {
+    "theme": "Formation",
+    "question": "Où se déroulent les formations ?",
+    "answer": "Nos sessions en présentiel se tiennent généralement à notre siège à Abidjan ou dans des hôtels partenaires au Plateau/Cocody. Le lieu exact est confirmé sur votre convocation.\n\nPour les séminaires internationaux, le lieu exact est confirmé lors de votre inscription.\n\nLes formations en ligne se font via Teams/Zoom ou notre plateforme Pel_academy.",
+    "keywords": ["lieu", "salle", "adresse", "distanciel", "présentiel", "où"]
+  },
+  {
+    "theme": "Formation",
+    "question": "Le certificat est-il reconnu ?",
+    "answer": "Oui, nos certificats professionnels et pratiques sont reconnus par l'État de Côte d'Ivoire (FDFP) et nos partenaires internationaux.\n\nLes certifications PECB sont reconnues mondialement.",
+    "keywords": ["diplôme", "valeur", "fdfp", "agrément", "certificat", "reconnu"]
+  },
+  {
+    "theme": "Conseil",
+    "question": "Combien coûte un diagnostic achats ?",
+    "answer": "Le tarif d'un diagnostic dépend de la taille de votre structure et du périmètre audité. Je dois d'abord recueillir vos besoins (Secteur, CA, Problématique) pour que nos consultants établissent un devis précis.",
+    "keywords": ["prix", "tarif", "devis", "coût", "diagnostic", "combien"]
+  },
+  {
+    "theme": "Conseil",
+    "question": "Accompagnez-vous les entreprises à la certification ISO ?",
+    "answer": "Oui, ECT accompagne les entreprises désireuses d'être certifiées dans les normes ISO (9001, 14001, 45001, 27001, 28000, 50001, 55001).\n\nEn dehors de ces démarches normatives, ECT vous propose également des audits/diagnostics (Achats, Supply Chain, autres) en temps réduit pour renforcer votre productivité et développer des plans de transformation efficients.\n\nPlus d'infos : commercial@ect.ci",
+    "keywords": ["audit", "diagnostic", "analyse", "dysfonctionnement", "certification", "iso"]
+  },
+  {
+    "theme": "Administratif",
+    "question": "Comment obtenir une facture proforma ?",
+    "answer": "Pour obtenir une proforma, veuillez envoyer votre demande précise (intitulé de la mission ou de la formation) à commercial@ect.ci ou utiliser le formulaire de contact sur le site.",
+    "keywords": ["facture", "devis", "paiement", "proforma"]
+  },
+  {
+    "theme": "Support",
+    "question": "Avez-vous un catalogue PDF ?",
+    "answer": "Oui, vous pouvez télécharger le Catalogue Formation 2026 directement depuis notre site. Il contient tous les détails sur les modules Supply Chain, Achat, QHSE et Digital.",
+    "keywords": ["brochure", "programme", "pdf", "catalogue", "télécharger"]
+  },
+  {
+    "theme": "Support",
+    "question": "Je souhaite en savoir plus sur vos outils d'audit/diagnostic.",
+    "answer": "Nous vous proposons des outils d'audit/diagnostic en Achats, Supply Chain, QHSE, Asset Management, etc. alignés sur les meilleures pratiques universelles pour identifier rapidement des axes de progrès et transformer vos défis en valeur ajoutée réelle.",
+    "keywords": ["outil", "brochure", "pdf", "diagnostic"]
+  },
+  {
+    "theme": "Support",
+    "question": "Quels outils proposez-vous ?",
+    "answer": "Voici nos outils :\n\n• Sectinel Upstream – Visibilité du flux amont (Fournisseurs → Entreprise)\n• Sectinel i55 – Identification, valorisation et renouvellement des actifs\n• Sectinel i28 – Mesures de sécurité sur la Supply Chain\n• SAFE Supplier – Gestion des risques fournisseurs\n• Stock Skills – Plans de progrès des gestionnaires de stocks\n• PSA – Auto-évaluation des compétences métier\n• EMA – Évaluation du département Achats\n• ENVA – Stratégies d'achats durables\n• KM – Préservation des connaissances critiques\n\nPlus d'infos : commercial@ect.ci",
+    "keywords": ["outil", "sectinel", "safe", "stock", "psa", "ema", "enva", "km"]
+  }
+]

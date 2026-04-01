@@ -1,0 +1,32 @@
+[
+  {
+    "type": "Certificat professionnel",
+    "cible": "Travailleur individuel",
+    "duree": "30 à 120 heures",
+    "mode": "Présentiel / En ligne"
+  },
+  {
+    "type": "Certificat pratique",
+    "cible": "Travailleur individuel",
+    "duree": "40 heures",
+    "mode": "Présentiel / En ligne"
+  },
+  {
+    "type": "Séminaire intra/inter-entreprises",
+    "cible": "Entreprises",
+    "duree": "2 à 3 jours",
+    "mode": "Présentiel"
+  },
+  {
+    "type": "Séminaire international",
+    "cible": "Entreprises",
+    "duree": "2 à 3 semaines",
+    "mode": "Présentiel"
+  },
+  {
+    "type": "Certification ISO by PECB",
+    "cible": "Travailleur individuel",
+    "duree": "À son rythme (max 10 mois)",
+    "mode": "Auto-formation"
+  }
+]
