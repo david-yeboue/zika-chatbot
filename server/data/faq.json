@@ -1,56 +1,110 @@
 [
   {
     "theme": "Général",
+    "question": "C'est quoi ECT ?",
+    "answer": "Eburnis Conseil & Technologies (ECT) est un cabinet spécialisé en audit, conseil et formation, basé à Abidjan.\n\nECT est à votre disposition pour garantir la performance, la sûreté et la pérennité de votre activité.\n\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50\n📧 ect@ect.ci\n🌐 www.ect.ci",
+    "keywords": ["ect", "eburnis", "cabinet", "entreprise", "qui", "société", "présentation"]
+  },
+  {
+    "theme": "Général",
+    "question": "Quelle est la vision et la mission d'ECT ?",
+    "answer": "🎯 Vision : Être la référence continentale dans le développement de la résilience des chaînes de valeurs.\n\n🏆 Mission : Assurer la continuité et la performance des organisations.\n\n💎 Valeurs : Compétences • Synergies • Intégrité • Innovation",
+    "keywords": ["vision", "mission", "valeurs", "objectif", "ambition", "référence"]
+  },
+  {
+    "theme": "Général",
+    "question": "Quelles sont les cibles d'ECT ?",
+    "answer": "ECT accompagne un large spectre d'organisations :\n\n• EPN & EPIC\n• Importateurs & Exportateurs\n• Industriels\n• Entreprises de sécurité\n• Établissements financiers\n• Entreprises agricoles\n• Et bien d'autres secteurs\n\nVous souhaitez savoir si ECT peut vous accompagner ? Contactez-nous à commercial@ect.ci",
+    "keywords": ["cible", "client", "secteur", "industrie", "concerne", "pour qui"]
+  },
+  {
+    "theme": "Général",
+    "question": "Quelles sont les habilitations d'ECT ?",
+    "answer": "ECT bénéficie de deux habilitations majeures :\n\n✅ Agréé FDFP — Vos formations sont éligibles au remboursement par le Fonds de Développement de la Formation Professionnelle de Côte d'Ivoire.\n\n✅ PECB Authorized Partner — ECT est partenaire officiel de PECB pour les certifications ISO reconnues mondialement.\n\nN° CC : 132170N | RCCM : CI-ABJ-2013-B-4423",
+    "keywords": ["fdfp", "pecb", "accréditation", "habilitation", "agrément", "officiel", "rccm"]
+  },
+  {
+    "theme": "Portage Salarial",
     "question": "C'est quoi le portage salarial chez ECT ?",
-    "answer": "Eburnis Conseil & Technologies propose le portage salarial aux entreprises/organismes qui souhaitent optimiser leur gestion administrative et fiscale de leur capital humain pour se consacrer à leur cœur de métier.\n\nLes professionnels en freelance trouvent par notre solution de portage une alternative contractuelle à leur collaboration avec leur employeur/client pour des projets spécifiques.\n\nPour plus d'informations ou obtenir un devis, contactez-nous via le formulaire.",
-    "keywords": ["portage", "salarial", "statut", "freelance"]
+    "answer": "Le portage salarial ECT vous permet de vous concentrer pleinement sur votre expertise, sans vous soucier des contraintes administratives et sociales.\n\nECT prend en charge toutes les formalités liées à vos salariés :\n\n📋 Gestion administrative\n• Édition et suivi des feuilles de temps\n• Gestion des congés et absences\n• Édition des bulletins de paie\n• Calcul prévisionnel de la paie\n\n💰 Rémunération & Conformité\n• Déclaration auprès de la CNPS et CMU\n• Paiement des charges fiscales et sociales\n• Versement des avantages et rémunérations\n\nContactez-nous : commercial@ect.ci",
+    "keywords": ["portage", "salarial", "statut", "freelance", "formalité", "administratif", "paie", "bulletin", "cnps", "cmu"]
+  },
+  {
+    "theme": "Portage Salarial",
+    "question": "Quels sont les avantages du portage salarial ECT ?",
+    "answer": "Le portage salarial ECT est la solution idéale pour les entreprises qui recherchent flexibilité, expertise et maîtrise des coûts :\n\n🚀 Accès rapide à des compétences pointues\nRecrutez des experts pour des missions ponctuelles, sans les délais et coûts d'une embauche classique.\n\n🔧 Gestion simplifiée\nOubliez les formalités administratives, fiscales, sociales et juridiques. ECT s'occupe de tout !\n\n💰 Maîtrise budgétaire\nVous ne payez que les prestations réalisées selon un tarif clair et transparent.\n\n🎯 Évaluation facilitée\nTestez et validez les compétences d'un salarié avant une embauche définitive.",
+    "keywords": ["avantage", "bénéfice", "pourquoi", "portage", "flexible", "coût", "expert", "compétence", "embauche"]
+  },
+  {
+    "theme": "Portage Salarial",
+    "question": "Pourquoi choisir ECT pour le portage salarial ?",
+    "answer": "ECT se distingue par 4 atouts clés :\n\n🌍 Expertise locale : Connaissance approfondie du marché ivoirien et de ses spécificités.\n\n🤝 Accompagnement personnalisé : Une équipe dédiée à votre écoute pour répondre à vos besoins.\n\n📊 Transparence : Des informations claires et précises sur les coûts et les procédures.\n\n✅ Fiabilité : Une société reconnue pour son sérieux et son professionnalisme.\n\n📞 (+225) 21.50.00.41.57 | 📧 commercial@ect.ci",
+    "keywords": ["pourquoi", "choisir", "confiance", "différence", "sérieux", "professionnel", "ivoirien", "local"]
+  },
+  {
+    "theme": "Formation",
+    "question": "Quelles formations proposez-vous ?",
+    "answer": "ECT propose plusieurs types de formations :\n\n🎓 Certificat professionnel (30 à 120h — Présentiel/En ligne)\n🎓 Certificat pratique (40h — Présentiel/En ligne)\n🏢 Séminaire intra/inter-entreprises (2 à 3 jours — Présentiel)\n🌍 Séminaire international (2 à 3 semaines — Présentiel)\n📚 Certification ISO by PECB (À son rythme — max 10 mois)\n\nThématiques : Achats & Supply Chain • QHSE • Asset Management • Digital & IA • RH & Management\n\nConsultez le catalogue sur www.ect.ci ou écrivez à commercial@ect.ci",
+    "keywords": ["formation", "cours", "programme", "apprendre", "thématique", "catalogue", "types", "séminaire"]
   },
   {
     "theme": "Formation",
     "question": "Où se déroulent les formations ?",
     "answer": "Nos sessions en présentiel se tiennent généralement à notre siège à Abidjan ou dans des hôtels partenaires au Plateau/Cocody. Le lieu exact est confirmé sur votre convocation.\n\nPour les séminaires internationaux, le lieu exact est confirmé lors de votre inscription.\n\nLes formations en ligne se font via Teams/Zoom ou notre plateforme Pel_academy.",
-    "keywords": ["lieu", "salle", "adresse", "distanciel", "présentiel", "où"]
+    "keywords": ["lieu", "salle", "adresse", "distanciel", "présentiel", "où", "location", "place"]
   },
   {
     "theme": "Formation",
-    "question": "Le certificat est-il reconnu ?",
-    "answer": "Oui, nos certificats professionnels et pratiques sont reconnus par l'État de Côte d'Ivoire (FDFP) et nos partenaires internationaux.\n\nLes certifications PECB sont reconnues mondialement.",
-    "keywords": ["diplôme", "valeur", "fdfp", "agrément", "certificat", "reconnu"]
+    "question": "Les certifications PECB sont-elles reconnues ?",
+    "answer": "Oui ! ECT est PECB Authorized Partner. Les certifications PECB sont reconnues mondialement dans plus de 150 pays.\n\nECT est également agréé FDFP — vos formations peuvent être prises en charge par le Fonds de Développement de la Formation Professionnelle.\n\nNormes disponibles : ISO 9001, 14001, 22301, 27001, 28000, 45001, 55001\n\nPlus d'infos : commercial@ect.ci",
+    "keywords": ["pecb", "reconnu", "certif", "diplôme", "valeur", "fdfp", "agrément", "mondial", "international", "certificat"]
   },
   {
     "theme": "Conseil",
-    "question": "Combien coûte un diagnostic achats ?",
-    "answer": "Le tarif d'un diagnostic dépend de la taille de votre structure et du périmètre audité. Je dois d'abord recueillir vos besoins (Secteur, CA, Problématique) pour que nos consultants établissent un devis précis.",
-    "keywords": ["prix", "tarif", "devis", "coût", "diagnostic", "combien"]
+    "question": "Quels services d'audit et conseil proposez-vous ?",
+    "answer": "ECT propose des services d'Audit & Conseil des Chaînes de Valeur :\n\n🔍 Audits\n• Audit de la sûreté de la chaîne d'approvisionnement (ISO 28000:2022)\n• Audit de maturité de la chaîne d'approvisionnement\n• Audit fournisseur\n\n📋 Conseil & Accompagnement\n• Élaboration de plan de sûreté et de continuité (PCA)\n• Préparation à la certification ISO 28000 et ISO 55001\n• Assistance RSE\n• Accompagnement ISO 9001, 14001, 22301, 28000, 45001, 55001\n\nPour un diagnostic : commercial@ect.ci",
+    "keywords": ["conseil", "accompagnement", "service", "offre", "audit", "chaîne", "valeur", "approvisionnement", "supply"]
   },
   {
     "theme": "Conseil",
     "question": "Accompagnez-vous les entreprises à la certification ISO ?",
-    "answer": "Oui, ECT accompagne les entreprises désireuses d'être certifiées dans les normes ISO (9001, 14001, 45001, 27001, 28000, 50001, 55001).\n\nEn dehors de ces démarches normatives, ECT vous propose également des audits/diagnostics (Achats, Supply Chain, autres) en temps réduit pour renforcer votre productivité et développer des plans de transformation efficients.\n\nPlus d'infos : commercial@ect.ci",
-    "keywords": ["audit", "diagnostic", "analyse", "dysfonctionnement", "certification", "iso"]
+    "answer": "Oui, ECT accompagne les entreprises désireuses d'être certifiées dans les normes ISO :\n\n✅ ISO 9001 — Management de la qualité\n✅ ISO 14001 — Management environnemental\n✅ ISO 22301 — Continuité des activités\n✅ ISO 27001 — Sécurité de l'information\n✅ ISO 28000 — Sûreté de la chaîne d'approvisionnement\n✅ ISO 45001 — Santé et sécurité au travail\n✅ ISO 55001 — Gestion des actifs\n\nECT vous propose aussi des audits/diagnostics en temps réduit pour identifier rapidement vos axes de progrès.\n\nPlus d'infos : commercial@ect.ci",
+    "keywords": ["iso", "certification", "norme", "9001", "14001", "27001", "28000", "45001", "55001", "22301", "certifier"]
   },
   {
-    "theme": "Administratif",
-    "question": "Comment obtenir une facture proforma ?",
-    "answer": "Pour obtenir une proforma, veuillez envoyer votre demande précise (intitulé de la mission ou de la formation) à commercial@ect.ci ou utiliser le formulaire de contact sur le site.",
-    "keywords": ["facture", "devis", "paiement", "proforma"]
+    "theme": "Conseil",
+    "question": "Combien coûte un diagnostic ou audit ?",
+    "answer": "Le tarif d'un diagnostic dépend de la taille de votre structure et du périmètre audité.\n\nPour établir un devis précis, nos consultants ont besoin de quelques informations sur votre secteur, votre chiffre d'affaires et votre problématique principale.\n\nJe peux recueillir ces informations maintenant, ou contactez directement notre équipe :\n📧 commercial@ect.ci\n📞 (+225) 21.50.00.41.57",
+    "keywords": ["prix", "tarif", "devis", "coût", "diagnostic", "combien", "budget", "honoraires", "facturation"]
+  },
+  {
+    "theme": "Conseil",
+    "question": "Qu'est-ce que les projets innovants ECT ?",
+    "answer": "ECT initie des projets technologiques innovants pour améliorer les performances de la chaîne d'approvisionnement des organisations.\n\nECT développe des partenariats avec :\n• Des PME locales ivoiriennes\n• Des firmes internationales\n\nCes projets transforment vos défis opérationnels en avantages compétitifs durables.\n\nVous avez un projet innovant ? Parlons-en : ect@ect.ci",
+    "keywords": ["innovation", "projet", "technologie", "partenariat", "pme", "international", "innovant", "technologique"]
+  },
+  {
+    "theme": "Support",
+    "question": "Quels outils propriétaires proposez-vous ?",
+    "answer": "ECT dispose de 9 outils propriétaires :\n\n🔧 Supply Chain & Achats\n• Sectinel Upstream — Visibilité du flux amont fournisseurs\n• Sectinel i28 — Sécurité de la Supply Chain\n• SAFE Supplier — Gestion des risques fournisseurs\n• EMA — Évaluation du département Achats\n• ENVA — Stratégies d'achats durables\n\n📊 Asset Management\n• Sectinel i55 — Gestion des actifs\n\n👥 RH & Compétences\n• Stock Skills — Plans de progrès gestionnaires de stocks\n• PSA — Auto-évaluation des compétences métier\n• KM — Préservation des connaissances critiques\n\nPlus d'infos : commercial@ect.ci",
+    "keywords": ["outil", "sectinel", "safe", "stock", "psa", "ema", "enva", "km", "logiciel", "solution", "propriétaire"]
   },
   {
     "theme": "Support",
     "question": "Avez-vous un catalogue PDF ?",
-    "answer": "Oui, vous pouvez télécharger le Catalogue Formation 2026 directement depuis notre site. Il contient tous les détails sur les modules Supply Chain, Achat, QHSE et Digital.",
-    "keywords": ["brochure", "programme", "pdf", "catalogue", "télécharger"]
+    "answer": "Oui, vous pouvez télécharger le Catalogue Formation 2026 directement depuis notre site www.ect.ci\n\nIl contient tous les détails sur les modules :\n• Supply Chain & Achats\n• QHSE\n• Asset Management\n• Digital & IA\n• RH & Management\n\nVous pouvez également le demander par email : commercial@ect.ci",
+    "keywords": ["catalogue", "pdf", "brochure", "programme", "télécharger", "document", "2026"]
+  },
+  {
+    "theme": "Administratif",
+    "question": "Comment obtenir une facture proforma ?",
+    "answer": "Pour obtenir une proforma, veuillez envoyer votre demande précise (intitulé de la mission ou de la formation) à :\n\n📧 commercial@ect.ci\n\nOu utilisez le formulaire de contact sur www.ect.ci\n\nNos équipes vous répondront dans les plus brefs délais.",
+    "keywords": ["facture", "proforma", "devis", "paiement", "document", "commande", "bon"]
   },
   {
     "theme": "Support",
-    "question": "Je souhaite en savoir plus sur vos outils d'audit/diagnostic.",
-    "answer": "Nous vous proposons des outils d'audit/diagnostic en Achats, Supply Chain, QHSE, Asset Management, etc. alignés sur les meilleures pratiques universelles pour identifier rapidement des axes de progrès et transformer vos défis en valeur ajoutée réelle.",
-    "keywords": ["outil", "brochure", "pdf", "diagnostic"]
-  },
-  {
-    "theme": "Support",
-    "question": "Quels outils proposez-vous ?",
-    "answer": "Voici nos outils :\n\n• Sectinel Upstream – Visibilité du flux amont (Fournisseurs → Entreprise)\n• Sectinel i55 – Identification, valorisation et renouvellement des actifs\n• Sectinel i28 – Mesures de sécurité sur la Supply Chain\n• SAFE Supplier – Gestion des risques fournisseurs\n• Stock Skills – Plans de progrès des gestionnaires de stocks\n• PSA – Auto-évaluation des compétences métier\n• EMA – Évaluation du département Achats\n• ENVA – Stratégies d'achats durables\n• KM – Préservation des connaissances critiques\n\nPlus d'infos : commercial@ect.ci",
-    "keywords": ["outil", "sectinel", "safe", "stock", "psa", "ema", "enva", "km"]
+    "question": "Comment contacter ECT ?",
+    "answer": "Vous pouvez joindre ECT par les canaux suivants :\n\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50\n📧 ect@ect.ci | commercial@ect.ci\n🏢 Route de Bingerville, Quartier Ayopoumin, Abidjan\nBP 1636 Abidjan 22\n🌐 www.ect.ci",
+    "keywords": ["contact", "joindre", "téléphone", "email", "adresse", "localisation", "bureau", "siège", "rdv", "rendez-vous", "appel", "parler"]
   }
 ]
