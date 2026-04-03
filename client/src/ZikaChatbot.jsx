@@ -10,13 +10,12 @@ const THEMATIQUES = [
   "QHSE",
   "Asset Management",
   "Digital & IA",
-  "RH & Management",
 ];
 
 // ─── Appel Backend ────────────────────────────────────────────────────────────
 async function callBackend(message, contextHint = "") {
   try {
-    const res = await fetch("/api/chat", {
+    const res = await fetch("https://zika-chatbot.onrender.com/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message, contextHint }),
@@ -74,6 +73,14 @@ const quickIcons = {
       <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
     </svg>
   ),
+  "Portage salarial": (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+      <circle cx="9" cy="7" r="4"/>
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+      <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+    </svg>
+  ),
   "Nos outils d'audit": (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
@@ -89,6 +96,7 @@ const quickIcons = {
 const quickDesc = {
   "Nos formations":      "Explorer le catalogue 2026",
   "Demander un conseil": "Audit & diagnostic personnalisé",
+  "Portage salarial":    "Gestion RH simplifiée",
   "Nos outils d'audit":  "Sectinel, SAFE Supplier…",
   "Nous contacter":      "RDV, téléphone & adresse",
 };
@@ -219,6 +227,18 @@ export default function ZikaChatbot() {
         addMessage("bot", reply);
         return;
       }
+
+      if (flowState.type === "portage" && flowState.step === 1) {
+        setFlowState(null);
+        setIsLoading(true);
+        const reply = await callBackend(
+          `Un prospect s'intéresse au portage salarial ECT et veut savoir : "${text}". Donne une réponse complète et professionnelle, puis invite à contacter commercial@ect.ci ou le (+225) 21.50.00.41.57.`,
+          `Question portage salarial : ${text}`
+        );
+        setIsLoading(false);
+        addMessage("bot", reply);
+        return;
+      }
     }
 
     if (lower.match(/(conseil|diagnostic|audit|accompagn|certif|iso)/)) {
@@ -232,6 +252,15 @@ export default function ZikaChatbot() {
     if (lower.match(/(formation|séminaire|certificat|apprendre|cours|programme|inscription|inscrire)/)) {
       setFlowState({ type: "formation", step: 1, data: {} });
       addMessage("bot", "Très bien ! Dans quelle thématique souhaitez-vous vous former ?", THEMATIQUES);
+      return;
+    }
+
+    if (lower.match(/(portage|salarial|paie|bulletin|cnps|cmu|ressources humaines|rh externalisation)/)) {
+      setFlowState({ type: "portage", step: 1, data: {} });
+      addMessage("bot",
+        "Le portage salarial ECT vous libère des contraintes administratives RH pour vous concentrer sur votre cœur de métier.\n\nQue souhaitez-vous savoir ?",
+        ["Ce que ça inclut", "Les avantages pour mon entreprise", "Pourquoi choisir ECT", "Obtenir un devis"]
+      );
       return;
     }
     if (lower.match(/(contact|rdv|rendez.vous|appel|téléphone|joindre|parler)/)) {
@@ -270,7 +299,7 @@ export default function ZikaChatbot() {
     setShowWelcome(true); setIsLoading(false);
   }, []);
 
-  const quickActions = ["Nos formations", "Demander un conseil", "Nos outils d'audit", "Nous contacter"];
+  const quickActions = ["Nos formations", "Demander un conseil", "Portage salarial", "Nos outils d'audit", "Nous contacter"];
 
   // ── Rendu ──────────────────────────────────────────────────────────────────
   return (
@@ -346,6 +375,7 @@ export default function ZikaChatbot() {
         .w-card { background:#FFF; border:1.5px solid #EDEAE6; border-radius:16px;
           padding:15px 13px; cursor:pointer; text-align:left;
           transition:all .25s ease; box-shadow:0 2px 8px rgba(0,0,0,0.035); }
+        .w-card-full { grid-column: 1 / -1; }
         .w-card:hover { border-color:#E8690B; box-shadow:0 6px 22px rgba(232,105,11,0.13);
           transform:translateY(-3px); }
         .w-card-icon { width:42px; height:42px; border-radius:12px;
@@ -451,7 +481,7 @@ export default function ZikaChatbot() {
               </div>
               <div className="w-grid">
                 {quickActions.map((label, i) => (
-                  <button key={i} className="w-card" onClick={() => handleOption(label)}>
+                  <button key={i} className={`w-card${quickActions.length % 2 !== 0 && i === quickActions.length - 1 ? " w-card-full" : ""}`} onClick={() => handleOption(label)}>
                     <div className="w-card-icon">{quickIcons[label]}</div>
                     <div className="w-card-label">{label}</div>
                     <div className="w-card-desc">{quickDesc[label]}</div>
