@@ -5,11 +5,24 @@ import { useState, useRef, useEffect, useCallback } from "react";
 // exemple : "/logo-ect.png"  (fichier à placer dans client/public/)
 const ECT_LOGO_URL = "/Logo_ect.png";
 
+// Catégories formations du catalogue 2026
 const THEMATIQUES = [
-  "Achats & Supply Chain",
-  "QHSE",
-  "Asset Management",
-  "Digital & IA",
+  "Certificats Professionnels",
+  "Certificats Pratiques",
+  "Séminaires Intra/Inter",
+  "Formations à la Carte",
+  "Séminaires Internationaux",
+  "Certifications PECB",
+];
+
+// Outils ECT
+const OUTILS_ECT = [
+  "SECTINEL Upstream (IA Achats)",
+  "Si55 Execution (Asset Management)",
+  "PSA Grid™ (Compétences Achats)",
+  "STOCK SKILLS™ (Gestion Stocks)",
+  "K-Map 360 (Capital Savoir)",
+  "SAFE Supplier (Risques Fournisseurs)",
 ];
 
 // ─── Appel Backend ────────────────────────────────────────────────────────────
@@ -95,9 +108,9 @@ const quickIcons = {
 
 const quickDesc = {
   "Nos formations":      "Explorer le catalogue 2026",
-  "Demander un conseil": "Audit & diagnostic personnalisé",
+  "Demander un conseil": "Audit & conseil sur mesure",
   "Portage salarial":    "Gestion RH simplifiée",
-  "Nos outils d'audit":  "Sectinel, SAFE Supplier…",
+  "Nos outils d'audit":  "SECTINEL, Si55, PSA Grid…",
   "Nous contacter":      "RDV, téléphone & adresse",
 };
 
@@ -193,7 +206,7 @@ export default function ZikaChatbot() {
           d.secteur = text;
           setFlowState({ type: "conseil", step: 2, data: d });
           addMessage("bot", "Merci. Quel est le chiffre d'affaires annuel approximatif de votre structure ?",
-            ["Moins de 500 M FCFA", "500 M – 2 Mds FCFA", "2 – 10 Mds FCFA", "Plus de 10 Mds FCFA"]);
+            ["Moins de 500 Millions FCFA", "500 Millions – 2 Milliards FCFA", "2 – 10 Milliards FCFA", "Plus de 10 Milliards FCFA"]);
           return;
         }
         if (flowState.step === 2) {
@@ -220,8 +233,8 @@ export default function ZikaChatbot() {
         setFlowState(null);
         setIsLoading(true);
         const reply = await callBackend(
-          `Un prospect cherche une formation en "${text}" chez ECT. Présente les types disponibles et invite à contacter commercial@ect.ci.`,
-          `Thématique : ${text}`
+          `Un prospect ECT s'intéresse aux "${text}" du Catalogue 2026. Présente ce type de formation en détail (durée, niveau, contenu, horaires disponibles), cite des exemples concrets du catalogue et invite à consulter https://catalogue-formations-ect-2026.netlify.app/ ou à contacter commercial@ect.ci.`,
+          `Type de formation demandé : ${text}`
         );
         setIsLoading(false);
         addMessage("bot", reply);
@@ -239,19 +252,43 @@ export default function ZikaChatbot() {
         addMessage("bot", reply);
         return;
       }
+
+      if (flowState.type === "outils" && flowState.step === 1) {
+        setFlowState(null);
+        setIsLoading(true);
+        const reply = await callBackend(
+          `Un prospect ECT s'intéresse à l'outil suivant : "${text}". Présente cet outil en détail (fonctionnalités, bénéfices, cas d'usage) et invite à contacter commercial@ect.ci pour une démonstration. Réfère-toi au catalogue : https://catalogue-outils-ect.netlify.app/`,
+          `Outil demandé : ${text}`
+        );
+        setIsLoading(false);
+        addMessage("bot", reply);
+        return;
+      }
     }
 
     if (lower.match(/(conseil|diagnostic|audit|accompagn|certif|iso)/)) {
       setFlowState({ type: "conseil", step: 1, data: {} });
       addMessage("bot",
-        "Je vais recueillir quelques informations pour orienter votre demande.\n\nDans quel secteur d'activité évolue votre entreprise ?",
-        ["Industrie / Manufacture", "Commerce / Distribution", "Services / Tertiaire", "Énergie / Mines", "BTP / Immobilier", "Autre"]
+        "ECT propose des audits et conseils personnalisés pour renforcer la performance de votre organisation.\n\nDans quel secteur d'activité évolue votre entreprise ?",
+        ["Industrie / Manufacture", "Commerce / Distribution", "Services / Tertiaire", "Énergie / Mines", "BTP / Immobilier", "Agriculture", "Établissement financier", "Autre"]
       );
       return;
     }
     if (lower.match(/(formation|séminaire|certificat|apprendre|cours|programme|inscription|inscrire)/)) {
       setFlowState({ type: "formation", step: 1, data: {} });
-      addMessage("bot", "Très bien ! Dans quelle thématique souhaitez-vous vous former ?", THEMATIQUES);
+      addMessage("bot",
+        "ECT propose 80+ formations dans le Catalogue 2026 !\n\nQuel type de formation vous intéresse ?",
+        THEMATIQUES
+      );
+      return;
+    }
+
+    if (lower.match(/(outil|sectinel|si55|psa|stock skills|kmap|safe supplier|logiciel|solution|plateforme|produit)/)) {
+      setFlowState({ type: "outils", step: 1, data: {} });
+      addMessage("bot",
+        "ECT propose 6 solutions technologiques propriétaires conçues pour l'Afrique.\n\nQuel outil vous intéresse ?",
+        OUTILS_ECT
+      );
       return;
     }
 
@@ -263,6 +300,15 @@ export default function ZikaChatbot() {
       );
       return;
     }
+    if (lower.match(/(nos outils|outils d.audit)/i) || text === "Nos outils d'audit") {
+      setFlowState({ type: "outils", step: 1, data: {} });
+      addMessage("bot",
+        "ECT propose 6 solutions technologiques propriétaires conçues pour l'Afrique.\n\nQuel outil vous intéresse ?",
+        OUTILS_ECT
+      );
+      return;
+    }
+
     if (lower.match(/(contact|rdv|rendez.vous|appel|téléphone|joindre|parler)/)) {
       addMessage("bot",
         "Vous pouvez nous joindre par les canaux suivants :\n\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50\n📧 ect@ect.ci — commercial@ect.ci\n🏢 Route de Bingerville, Quartier Ayopoumin, Abidjan\n🌐 www.ect.ci",
