@@ -25,6 +25,149 @@ const OUTILS_ECT = [
   "SAFE Supplier (Risques Fournisseurs)",
 ];
 
+// ─── Données spécifiques par type de formation (Catalogue 2026) ──────────────
+const FORMATION_DATA = {
+  "Certificats Professionnels": {
+    desc: "15 parcours certifiants en 5 filières stratégiques — 3 niveaux de maîtrise.",
+    duree: "Débutant : 30h | Avancé : 40h | Expert : 50h",
+    horaires: "Samedis 08H–14H (présentiel/en ligne) | Mardis & Jeudis 19H–21H (en ligne)",
+    filières: [
+      "🛒 Responsable Achats (CPACH-1/2/3)",
+      "📦 Responsable Approvisionnement (CPAPP-1/2/3)",
+      "🚛 Responsable Logistique & ADV (CPLOG-1/2/3)",
+      "⚙️ Responsable de Production (CPPRO-1/2/3)",
+      "🔗 Responsable Supply Chain (CPSCM-1/2/3)",
+    ],
+    note: "Chaque filière comporte 3 niveaux progressifs : Débutant → Avancé → Expert.",
+    lien: "https://catalogue-formations-ect-2026.netlify.app/section_certificats_professionnels",
+  },
+  "Certificats Pratiques": {
+    desc: "6 certificats opérationnels pour renforcer les compétences terrain.",
+    duree: "40 heures par certificat",
+    horaires: "Samedis 08H–14H (présentiel/en ligne) | Mardis & Jeudis 19H–21H (en ligne)",
+    filières: [
+      "🛒 Acheteur Opérationnel",
+      "📦 Approvisionneur",
+      "🚛 Logisticien",
+      "🚢 Transitaire",
+      "✅ Qualité",
+      "📋 Autres spécialités opérationnelles",
+    ],
+    note: "Ces certificats sont idéals pour les praticiens qui veulent valider rapidement leurs compétences.",
+    lien: "https://catalogue-formations-ect-2026.netlify.app/section_certificats_pratiques",
+  },
+  "Séminaires Intra/Inter": {
+    desc: "15 séminaires intensifs sur des thématiques Achats, QHSE, Supply Chain et Gestion Industrielle — avec études de cas.",
+    duree: "2 à 3 jours",
+    horaires: "Sessions planifiées en présentiel à Abidjan ou dans vos locaux (intra-entreprise)",
+    filières: [
+      "🏢 Achats & Patrimoine",
+      "⚙️ Gestion Industrielle",
+      "🔗 Supply Chain",
+      "🌿 QHSE",
+      "📊 Et 11 autres thèmes disponibles",
+    ],
+    note: "Format intra : formation dans vos locaux, contenu adapté à votre secteur. Format inter : sessions ouvertes avec d'autres entreprises.",
+    lien: "https://catalogue-formations-ect-2026.netlify.app/section_seminaires_intra",
+  },
+  "Formations à la Carte": {
+    desc: "70+ thèmes disponibles — Administration, Audit, Normes ISO, QHSE, Informatique, Excel, Supply Chain, Achats, Logistique.",
+    duree: "1 à 5 jours selon le thème choisi",
+    horaires: "Planifiées selon vos disponibilités — présentiel ou en ligne",
+    filières: [
+      "📋 Administration & Gestion",
+      "🔍 Audit & Conformité",
+      "📊 Normes ISO",
+      "🌿 QHSE",
+      "💻 Informatique & Excel",
+      "🔗 Supply Chain & Logistique",
+      "🛒 Achats opérationnels",
+      "Et bien d'autres sur demande...",
+    ],
+    note: "Vous choisissez le thème, la durée et le format — ECT adapte le contenu à votre contexte.",
+    lien: "https://catalogue-formations-ect-2026.netlify.app/section_formations_carte",
+  },
+  "Séminaires Internationaux": {
+    desc: "11 programmes intensifs dans des destinations prestigieuses.",
+    duree: "2 à 3 semaines",
+    horaires: "Sessions annuelles — Abidjan & Assinie | Paris | Dubaï | Casablanca",
+    filières: [
+      "🏛️ INT01 — Gestion du Patrimoine (3 sem.)",
+      "🚛 INT02 — Logistique & Moyens Généraux (3 sem.)",
+      "📦 INT03 — Gestion des Stocks & Approvisionnements (2 sem.)",
+      "⚡ INT04 — Zéro Rupture, Zéro Sur-stock (2 sem.)",
+      "💰 INT05 — Maîtrise du Risque Crédit (2 sem.)",
+      "💵 INT06 — Stratégies de Trésorerie (2 sem.)",
+      "🌍 INT07 — ZLECAF : Opportunités Douanières (2 sem.)",
+      "🛡️ INT08 — Business Résilience ISO 22301 (2 sem.)",
+      "⚠️ INT09 — Gestion des Risques ISO 31000 (2 sem.)",
+      "🌱 INT10 — Efficacité Énergétique (2 sem.)",
+      "📈 INT11 — Pilotage de la Performance Industrielle (2 sem.)",
+    ],
+    note: "Programmes intensifs combinant apports théoriques, visites d'entreprises et networking international.",
+    lien: "https://catalogue-formations-ect-2026.netlify.app/section_seminaires_internationaux",
+  },
+  "Certifications PECB": {
+    desc: "Certifications ISO internationales reconnues mondialement dans 150+ pays — via PECB, partenaire officiel d'ECT.",
+    duree: "À son rythme — maximum 10 mois | Formules : Foundation, Lead Implementer, Lead Auditor",
+    horaires: "Auto-formation en ligne + examens planifiés",
+    filières: [
+      "✅ ISO 9001 — Management de la qualité",
+      "✅ ISO 14001 — Management environnemental",
+      "✅ ISO 22301 — Continuité des activités",
+      "✅ ISO 27001 — Sécurité de l'information",
+      "✅ ISO 28000 — Sûreté Supply Chain",
+      "✅ ISO 31000 — Gestion des risques",
+      "✅ ISO 45001 — Santé & sécurité au travail",
+      "✅ ISO 50001 — Management de l'énergie",
+      "✅ ISO 55001 — Gestion des actifs",
+      "Et 5 autres normes disponibles...",
+    ],
+    note: "ECT est agréé FDFP — vos certifications peuvent être prises en charge financièrement.",
+    lien: "https://catalogue-formations-ect-2026.netlify.app/section_pecb",
+  },
+};
+
+// ─── Données outils ECT avec liens ───────────────────────────────────────────
+const OUTILS_DATA = {
+  "SECTINEL Upstream (IA Achats)": {
+    desc: "Solution IA tout-en-un pour automatiser le cycle des achats.",
+    points: ["🤖 Veille stratégique automatisée", "📄 Génération d'appels d'offres", "📊 Analyse multicritères fournisseurs", "⚠️ Gestion des risques fournisseurs", "🌍 Multi-devises FCFA/EUR/USD — Conforme OHADA"],
+    lien: "https://catalogue-outils-ect.netlify.app/",
+    demo: "commercial@ect.ci",
+  },
+  "Si55 Execution (Asset Management)": {
+    desc: "Plateforme opérationnelle de gestion des actifs conforme ISO 55001 — 8 modules.",
+    points: ["📦 Inventaire des actifs", "🔧 Maintenance préventive & corrective", "🔄 Renouvellement des actifs", "⚠️ Gestion des risques", "💰 Suivi financier"],
+    lien: "https://si55.ect.ci/",
+    demo: "commercial@ect.ci",
+  },
+  "PSA Grid™ (Compétences Achats)": {
+    desc: "Grille d'évaluation des compétences achats — 35 compétences, 7 domaines, Méthode Hay.",
+    points: ["📊 35 compétences évaluées", "🎯 7 domaines stratégiques", "📈 Analyses croisées automatisées", "📋 Plan de progrès individuel", "⚖️ Pesée des postes (Méthode Hay)"],
+    lien: "https://catalogue-outils-ect.netlify.app/",
+    demo: "commercial@ect.ci",
+  },
+  "STOCK SKILLS™ (Gestion Stocks)": {
+    desc: "Grille d'évaluation certifiée pour les compétences en gestion des stocks.",
+    points: ["📦 6 domaines d'évaluation", "📊 5 niveaux de maturité", "🎯 Plan de développement personnalisé", "✅ Évaluation certifiée"],
+    lien: "https://catalogue-outils-ect.netlify.app/",
+    demo: "commercial@ect.ci",
+  },
+  "K-Map 360 (Capital Savoir)": {
+    desc: "Cartographie et protection du capital savoir de votre entreprise.",
+    points: ["🗺️ Cartographie des connaissances critiques", "🔄 Évaluation 360°", "⚠️ Calcul du Bus Factor", "🚀 Offboarding intelligent", "📊 Data visualisation avancée"],
+    lien: "https://catalogue-outils-ect.netlify.app/",
+    demo: "commercial@ect.ci",
+  },
+  "SAFE Supplier (Risques Fournisseurs)": {
+    desc: "Gestion et évaluation des risques fournisseurs pour sécuriser votre Supply Chain.",
+    points: ["⚠️ Évaluation des risques fournisseurs", "📊 Scoring multicritères", "🔍 Suivi et surveillance continues", "📋 Rapports d'audit fournisseurs"],
+    lien: "https://catalogue-outils-ect.netlify.app/",
+    demo: "commercial@ect.ci",
+  },
+};
+
 // ─── Appel Backend ────────────────────────────────────────────────────────────
 async function callBackend(message, contextHint = "") {
   try {
@@ -231,18 +374,38 @@ export default function ZikaChatbot() {
       }
       if (flowState.type === "formation" && flowState.step === 1) {
         setFlowState(null);
-        setIsLoading(true);
-        const reply = await callBackend(
-          `Un prospect ECT s'intéresse aux "${text}" du Catalogue 2026. Présente ce type de formation en détail (durée, niveau, contenu, horaires disponibles), cite des exemples concrets du catalogue et invite à consulter https://catalogue-formations-ect-2026.netlify.app/ ou à contacter commercial@ect.ci.`,
-          `Type de formation demandé : ${text}`
-        );
-        setIsLoading(false);
-        addMessage("bot", reply);
+        const fd = FORMATION_DATA[text];
+        if (fd) {
+          // Réponse directe depuis les données du catalogue — pas d'appel IA
+          const filieres = fd.filières.join("\n");
+          const msg = `📚 ${text}\n\n${fd.desc}\n\n⏱️ Durée : ${fd.duree}\n🗓️ Horaires : ${fd.horaires}\n\n📋 Contenu / Filières :\n${filieres}\n\n💡 ${fd.note}\n\n🔗 Voir le détail : ${fd.lien}\n\n📧 Inscription : commercial@ect.ci\n📞 (+225) 21.50.00.41.57`;
+          addMessage("bot", msg);
+        } else {
+          setIsLoading(true);
+          const reply = await callBackend(
+            `Un prospect ECT s'intéresse aux "${text}" du Catalogue 2026. Présente ce type de formation en détail et invite à consulter https://catalogue-formations-ect-2026.netlify.app/ ou à contacter commercial@ect.ci.`,
+            `Type de formation demandé : ${text}`
+          );
+          setIsLoading(false);
+          addMessage("bot", reply);
+        }
         return;
       }
 
       if (flowState.type === "portage" && flowState.step === 1) {
         setFlowState(null);
+        if (text === "Nous contacter") {
+          addMessage("bot",
+            "Pour toute demande de portage salarial, contactez notre équipe :\n\n📧 commercial@ect.ci\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50\n🌐 www.ect.ci\n🏢 Route de Bingerville, Quartier Ayopoumin, Abidjan\n\nNos conseillers vous répondent dans les 24h ouvrées."
+          );
+          return;
+        }
+        if (text === "Obtenir un devis") {
+          addMessage("bot",
+            "Pour obtenir un devis portage salarial personnalisé, envoyez-nous :\n\n• Le nombre de salariés concernés\n• La durée de la mission\n• Votre secteur d'activité\n\n📧 commercial@ect.ci\n📞 (+225) 21.50.00.41.57\n\nNos consultants vous répondent sous 24h."
+          );
+          return;
+        }
         setIsLoading(true);
         const reply = await callBackend(
           `Un prospect s'intéresse au portage salarial ECT et veut savoir : "${text}". Donne une réponse complète et professionnelle, puis invite à contacter commercial@ect.ci ou le (+225) 21.50.00.41.57.`,
@@ -255,13 +418,20 @@ export default function ZikaChatbot() {
 
       if (flowState.type === "outils" && flowState.step === 1) {
         setFlowState(null);
-        setIsLoading(true);
-        const reply = await callBackend(
-          `Un prospect ECT s'intéresse à l'outil suivant : "${text}". Présente cet outil en détail (fonctionnalités, bénéfices, cas d'usage) et invite à contacter commercial@ect.ci pour une démonstration. Réfère-toi au catalogue : https://catalogue-outils-ect.netlify.app/`,
-          `Outil demandé : ${text}`
-        );
-        setIsLoading(false);
-        addMessage("bot", reply);
+        const od = OUTILS_DATA[text];
+        if (od) {
+          const points = od.points.join("\n");
+          const msg = `🔧 ${text}\n\n${od.desc}\n\n✨ Fonctionnalités :\n${points}\n\n🔗 En savoir plus : ${od.lien}\n📧 Demander une démo : ${od.demo}\n📞 (+225) 21.50.00.41.57`;
+          addMessage("bot", msg);
+        } else {
+          setIsLoading(true);
+          const reply = await callBackend(
+            `Un prospect ECT s'intéresse à l'outil : "${text}". Présente-le en détail et invite à contacter commercial@ect.ci pour une démo.`,
+            `Outil : ${text}`
+          );
+          setIsLoading(false);
+          addMessage("bot", reply);
+        }
         return;
       }
     }
@@ -284,11 +454,14 @@ export default function ZikaChatbot() {
     }
 
     if (lower.match(/(outil|sectinel|si55|psa|stock skills|kmap|safe supplier|logiciel|solution|plateforme|produit)/)) {
-      setFlowState({ type: "outils", step: 1, data: {} });
+      const apercu = Object.entries(OUTILS_DATA).map(([nom, data]) =>
+        `▸ ${nom}\n  ${data.desc}`
+      ).join("\n\n");
       addMessage("bot",
-        "ECT propose 6 solutions technologiques propriétaires conçues pour l'Afrique.\n\nQuel outil vous intéresse ?",
+        `ECT propose 6 solutions technologiques propriétaires :\n\n${apercu}\n\n👉 Cliquez sur un outil pour en savoir plus.`,
         OUTILS_ECT
       );
+      setFlowState({ type: "outils", step: 1, data: {} });
       return;
     }
 
@@ -296,16 +469,20 @@ export default function ZikaChatbot() {
       setFlowState({ type: "portage", step: 1, data: {} });
       addMessage("bot",
         "Le portage salarial ECT vous libère des contraintes administratives RH pour vous concentrer sur votre cœur de métier.\n\nQue souhaitez-vous savoir ?",
-        ["Ce que ça inclut", "Les avantages pour mon entreprise", "Pourquoi choisir ECT", "Obtenir un devis"]
+        ["Ce que ça inclut", "Les avantages pour mon entreprise", "Pourquoi choisir ECT", "Obtenir un devis", "Nous contacter"]
       );
       return;
     }
     if (lower.match(/(nos outils|outils d.audit)/i) || text === "Nos outils d'audit") {
-      setFlowState({ type: "outils", step: 1, data: {} });
+      // Afficher tous les outils directement sans étape supplémentaire
+      const apercu = Object.entries(OUTILS_DATA).map(([nom, data]) =>
+        `▸ ${nom}\n  ${data.desc}`
+      ).join("\n\n");
       addMessage("bot",
-        "ECT propose 6 solutions technologiques propriétaires conçues pour l'Afrique.\n\nQuel outil vous intéresse ?",
+        `ECT propose 6 solutions technologiques propriétaires :\n\n${apercu}\n\n👉 Cliquez sur un outil pour en savoir plus.`,
         OUTILS_ECT
       );
+      setFlowState({ type: "outils", step: 1, data: {} });
       return;
     }
 
