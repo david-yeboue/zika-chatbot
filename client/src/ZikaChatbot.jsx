@@ -109,7 +109,7 @@ const FORMATION_DATA = {
   },
   "Certifications PECB": {
     desc: "Certifications ISO internationales reconnues mondialement dans 150+ pays — via PECB, partenaire officiel d'ECT.",
-    duree: "À son rythme — maximum 10 mois | Formules : Foundation, Lead Implementer, Lead Auditor",
+    duree: "À son rythme — maximum 12 mois | Formules : Foundation, Lead Implementer, Lead Auditor",
     horaires: "Auto-formation en ligne + examens planifiés",
     filières: [
       "✅ ISO 9001 — Management de la qualité",
@@ -181,7 +181,7 @@ async function callBackend(message, contextHint = "") {
       throw new Error(err.error || `Erreur ${res.status}`);
     }
     const data = await res.json();
-    return data.reply || "Je suis désolé, je n'ai pas obtenu de réponse. Veuillez contacter ECT au (+225) 21.50.00.41.57.";
+    return data.reply || "Je suis désolé, je n'ai pas obtenu de réponse. Veuillez contacter ECT au (+225) 21.50.00.41.57 / 05.75.98.50.50.";
   } catch {
     return "Une erreur de connexion est survenue. Veuillez réessayer ou nous contacter directement au (+225) 21.50.00.41.57 ou à ect@ect.ci.";
   }
@@ -302,19 +302,39 @@ function ECTLogo() {
 }
 
 // ─── Formatage texte ──────────────────────────────────────────────────────────
+function renderLineWithLinks(line) {
+  // Regex to detect URLs
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  const parts = line.split(urlRegex);
+  return parts.map((part, idx) => {
+    if (urlRegex.test(part)) {
+      // Reset regex lastIndex
+      urlRegex.lastIndex = 0;
+      return (
+        <a key={idx} href={part} target="_blank" rel="noopener noreferrer"
+          style={{ color: "#E8690B", textDecoration: "underline", wordBreak: "break-all" }}>
+          {part}
+        </a>
+      );
+    }
+    return <span key={idx}>{part}</span>;
+  });
+}
+
 function formatText(text) {
   return text.split("\n").map((line, i) => {
     if (line.trim() === "") return <div key={i} style={{ height: 8 }} />;
     const isBullet = line.startsWith("•") || line.startsWith("📞") ||
                      line.startsWith("📧") || line.startsWith("🏢") ||
-                     line.startsWith("🌐");
+                     line.startsWith("🌐") || line.startsWith("🔗");
+    const hasUrl = line.includes("http");
     return (
       <div key={i} style={{
         marginBottom: isBullet ? 4 : 2,
         lineHeight: 1.65,
         paddingLeft: line.startsWith("•") ? 4 : 0,
       }}>
-        {line}
+        {hasUrl ? renderLineWithLinks(line) : line}
       </div>
     );
   });
@@ -378,7 +398,7 @@ export default function ZikaChatbot() {
         if (fd) {
           // Réponse directe depuis les données du catalogue — pas d'appel IA
           const filieres = fd.filières.join("\n");
-          const msg = `📚 ${text}\n\n${fd.desc}\n\n⏱️ Durée : ${fd.duree}\n🗓️ Horaires : ${fd.horaires}\n\n📋 Contenu / Filières :\n${filieres}\n\n💡 ${fd.note}\n\n🔗 Voir le détail : ${fd.lien}\n\n📧 Inscription : commercial@ect.ci\n📞 (+225) 21.50.00.41.57`;
+          const msg = `📚 ${text}\n\n${fd.desc}\n\n⏱️ Durée : ${fd.duree}\n🗓️ Horaires : ${fd.horaires}\n\n📋 Contenu / Filières :\n${filieres}\n\n💡 ${fd.note}\n\n🔗 Voir le détail : ${fd.lien}\n\n📧 Inscription : commercial@ect.ci\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50`;
           addMessage("bot", msg);
         } else {
           setIsLoading(true);
@@ -402,7 +422,7 @@ export default function ZikaChatbot() {
         }
         if (text === "Obtenir un devis") {
           addMessage("bot",
-            "Pour obtenir un devis portage salarial personnalisé, envoyez-nous :\n\n• Le nombre de salariés concernés\n• La durée de la mission\n• Votre secteur d'activité\n\n📧 commercial@ect.ci\n📞 (+225) 21.50.00.41.57\n\nNos consultants vous répondent sous 24h."
+            "Pour obtenir un devis portage salarial personnalisé, envoyez-nous :\n\n• Le nombre de salariés concernés\n• La durée de la mission\n• Votre secteur d'activité\n\n📧 commercial@ect.ci\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50\n\nNos consultants vous répondent sous 24h."
           );
           return;
         }
@@ -421,7 +441,7 @@ export default function ZikaChatbot() {
         const od = OUTILS_DATA[text];
         if (od) {
           const points = od.points.join("\n");
-          const msg = `🔧 ${text}\n\n${od.desc}\n\n✨ Fonctionnalités :\n${points}\n\n🔗 En savoir plus : ${od.lien}\n📧 Demander une démo : ${od.demo}\n📞 (+225) 21.50.00.41.57`;
+          const msg = `🔧 ${text}\n\n${od.desc}\n\n✨ Fonctionnalités :\n${points}\n\n🔗 En savoir plus : ${od.lien}\n📧 Demander une démo : ${od.demo}\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50`;
           addMessage("bot", msg);
         } else {
           setIsLoading(true);
@@ -436,24 +456,9 @@ export default function ZikaChatbot() {
       }
     }
 
-    if (lower.match(/(conseil|diagnostic|audit|accompagn|certif|iso)/)) {
-      setFlowState({ type: "conseil", step: 1, data: {} });
-      addMessage("bot",
-        "ECT propose des audits et conseils personnalisés pour renforcer la performance de votre organisation.\n\nDans quel secteur d'activité évolue votre entreprise ?",
-        ["Industrie / Manufacture", "Commerce / Distribution", "Services / Tertiaire", "Énergie / Mines", "BTP / Immobilier", "Agriculture", "Établissement financier", "Autre"]
-      );
-      return;
-    }
-    if (lower.match(/(formation|séminaire|certificat|apprendre|cours|programme|inscription|inscrire)/)) {
-      setFlowState({ type: "formation", step: 1, data: {} });
-      addMessage("bot",
-        "ECT propose 80+ formations dans le Catalogue 2026 !\n\nQuel type de formation vous intéresse ?",
-        THEMATIQUES
-      );
-      return;
-    }
-
-    if (lower.match(/(outil|sectinel|si55|psa|stock skills|kmap|safe supplier|logiciel|solution|plateforme|produit)/)) {
+    // ── Priorité 1 : Outils (avant tout) ────────────────────────────────────
+    if (text === "Nos outils d'audit" || lower.match(/(nos outils|outils d.audit)/i) ||
+        lower.match(/(outil|sectinel|si55|psa|stock skills|kmap|safe supplier)/)) {
       const apercu = Object.entries(OUTILS_DATA).map(([nom, data]) =>
         `▸ ${nom}\n  ${data.desc}`
       ).join("\n\n");
@@ -464,6 +469,38 @@ export default function ZikaChatbot() {
       setFlowState({ type: "outils", step: 1, data: {} });
       return;
     }
+
+    // ── Priorité 2 : Formations ──────────────────────────────────────────────
+    // Si le texte est déjà un type de formation exact → réponse directe
+    if (FORMATION_DATA[text]) {
+      setFlowState(null);
+      const fd = FORMATION_DATA[text];
+      const filieres = fd.filières.join("\n");
+      const msg = `📚 ${text}\n\n${fd.desc}\n\n⏱️ Durée : ${fd.duree}\n🗓️ Horaires : ${fd.horaires}\n\n📋 Contenu / Filières :\n${filieres}\n\n💡 ${fd.note}\n\n🔗 Voir le détail : ${fd.lien}\n\n📧 Inscription : commercial@ect.ci\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50`;
+      addMessage("bot", msg);
+      return;
+    }
+    // Sinon → mot-clé formation → afficher le menu des types
+    if (lower.match(/(^nos formations$|formation|séminaire|certificat|certif|apprendre|cours|programme|inscription|inscrire|pecb)/)) {
+      setFlowState({ type: "formation", step: 1, data: {} });
+      addMessage("bot",
+        "ECT propose 80+ formations dans le Catalogue 2026 !\n\nQuel type de formation vous intéresse ?",
+        THEMATIQUES
+      );
+      return;
+    }
+
+    // ── Priorité 3 : Conseil & Audit ─────────────────────────────────────────
+    if (lower.match(/(conseil|diagnostic|accompagn|audit)/) && !text.includes("outils")) {
+      setFlowState({ type: "conseil", step: 1, data: {} });
+      addMessage("bot",
+        "ECT propose des audits et conseils personnalisés pour renforcer la performance de votre organisation.\n\nDans quel secteur d'activité évolue votre entreprise ?",
+        ["Industrie / Manufacture", "Commerce / Distribution", "Services / Tertiaire", "Énergie / Mines", "BTP / Immobilier", "Agriculture", "Établissement financier", "Autre"]
+      );
+      return;
+    }
+
+
 
     if (lower.match(/(portage|salarial|paie|bulletin|cnps|cmu|ressources humaines|rh externalisation)/)) {
       setFlowState({ type: "portage", step: 1, data: {} });
@@ -473,31 +510,29 @@ export default function ZikaChatbot() {
       );
       return;
     }
-    if (lower.match(/(nos outils|outils d.audit)/i) || text === "Nos outils d'audit") {
-      // Afficher tous les outils directement sans étape supplémentaire
-      const apercu = Object.entries(OUTILS_DATA).map(([nom, data]) =>
-        `▸ ${nom}\n  ${data.desc}`
-      ).join("\n\n");
-      addMessage("bot",
-        `ECT propose 6 solutions technologiques propriétaires :\n\n${apercu}\n\n👉 Cliquez sur un outil pour en savoir plus.`,
-        OUTILS_ECT
-      );
-      setFlowState({ type: "outils", step: 1, data: {} });
-      return;
-    }
+
 
     if (lower.match(/(contact|rdv|rendez.vous|appel|téléphone|joindre|parler)/)) {
       addMessage("bot",
-        "Vous pouvez nous joindre par les canaux suivants :\n\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50\n📧 ect@ect.ci — commercial@ect.ci\n🏢 Route de Bingerville, Quartier Ayopoumin, Abidjan\n🌐 www.ect.ci",
-        ["Service commercial", "Service formation", "Direction générale"]
+        "Vous pouvez nous joindre par les canaux suivants :\n\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50\n📧 ect@ect.ci — commercial@ect.ci\n🏢 Route de Bingerville, Quartier Ayopoumin, Abidjan\n🌐 www.ect.ci"
       );
       return;
     }
 
+    // Fallback : tenter FAQ/IA, si réponse vague → rediriger commercial
     setIsLoading(true);
     const reply = await callBackend(text);
     setIsLoading(false);
-    addMessage("bot", reply);
+    // Si la réponse IA semble vague ou si question complexe → ajouter redirection
+    const vagueKeywords = ["je ne sais pas", "je n'ai pas", "je suis désolé", "contactez", "n'ai pas pu", "pas d'information"];
+    const isVague = vagueKeywords.some(k => reply.toLowerCase().includes(k));
+    if (isVague) {
+      addMessage("bot",
+        reply + "\n\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50\n📧 commercial@ect.ci\n🌐 www.ect.ci"
+      );
+    } else {
+      addMessage("bot", reply);
+    }
   }, [flowState, addMessage]);
 
   const handleSend = useCallback(async (text = null) => {
