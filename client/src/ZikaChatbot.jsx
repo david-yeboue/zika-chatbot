@@ -128,6 +128,107 @@ const FORMATION_DATA = {
   },
 };
 
+
+// ─── Filières par type de formation ──────────────────────────────────────────
+const FILIERES_DATA = {
+  "Certificats Professionnels": [
+    "Responsable Achats",
+    "Responsable Approvisionnement",
+    "Responsable Logistique & ADV",
+    "Responsable de Production",
+    "Responsable Supply Chain",
+  ],
+  "Certificats Pratiques": [
+    "Acheteur Opérationnel",
+    "Approvisionneur",
+    "Logisticien",
+    "Transitaire",
+    "Qualité",
+  ],
+  "Séminaires Intra/Inter": [
+    "Achats & Patrimoine",
+    "Gestion Industrielle",
+    "Supply Chain",
+    "QHSE",
+    "Autres thèmes disponibles",
+  ],
+  "Formations à la Carte": [
+    "Administration & Gestion",
+    "Audit & Conformité",
+    "Normes ISO",
+    "QHSE",
+    "Informatique & Excel",
+    "Supply Chain & Logistique",
+    "Achats opérationnels",
+  ],
+  "Séminaires Internationaux": [
+    "INT01 — Gestion du Patrimoine",
+    "INT02 — Logistique & Moyens Généraux",
+    "INT03 — Gestion des Stocks & Approvisionnements",
+    "INT04 — Zéro Rupture, Zéro Sur-stock",
+    "INT05 — Maîtrise du Risque Crédit",
+    "INT06 — Stratégies de Trésorerie",
+    "INT07 — ZLECAF : Opportunités Douanières",
+    "INT08 — Business Résilience ISO 22301",
+    "INT09 — Gestion des Risques ISO 31000",
+    "INT10 — Efficacité Énergétique",
+    "INT11 — Pilotage de la Performance Industrielle",
+  ],
+  "Certifications PECB": [
+    "ISO 9001 — Management Qualité",
+    "ISO 14001 — Environnement",
+    "ISO 22301 — Continuité d'Activité",
+    "ISO 27001 — Sécurité de l'Information",
+    "ISO 28000 — Sûreté Supply Chain",
+    "ISO 31000 — Gestion des Risques",
+    "ISO 45001 — Santé & Sécurité",
+    "ISO 50001 — Management Énergie",
+    "ISO 55001 — Gestion des Actifs",
+  ],
+};
+
+// ─── Détails par filière ──────────────────────────────────────────────────────
+const DETAILS_FILIERES = {
+  "Responsable Achats": {
+    niveaux: [
+      { code: "CPACH-1", niveau: "Débutant", duree: "30h", contenu: ["Situer la fonction achats dans la chaîne de valeur", "Structurer un processus d'achat complet", "Maîtriser les techniques de négociation", "Évaluer, sélectionner et suivre les fournisseurs"] },
+      { code: "CPACH-2", niveau: "Avancé", duree: "40h", contenu: ["Aligner les achats sur les objectifs stratégiques", "Outils avancés d'analyse des coûts et KPI", "Négociations stratégiques et partenariats clés", "Achats responsables et transformation digitale"] },
+      { code: "CPACH-3", niveau: "Expert", duree: "50h", contenu: ["Politique achats stratégiques et compétitivité", "Résilience et collaboration en environnements complexes", "Technologies innovantes pour moderniser les processus", "Performance économique, sociale et environnementale"] },
+    ],
+  },
+  "Responsable Approvisionnement": {
+    niveaux: [
+      { code: "CPAPP-1", niveau: "Débutant", duree: "30h", contenu: ["Maîtriser stock, réapprovisionnement et flux logistiques", "Planifier les commandes et gérer les fournisseurs", "Équilibrer disponibilité et coûts de stockage", "Excel et ERP pour la gestion des données"] },
+      { code: "CPAPP-2", niveau: "Avancé", duree: "40h", contenu: ["Aligner sur objectifs coûts, délais et qualité", "JAT, ABC, réapprovisionnement automatique", "Indicateurs clés de performance", "Plans de continuité et gestion des risques"] },
+      { code: "CPAPP-3", niveau: "Expert", duree: "50h", contenu: ["Stratégies internationales, durabilité et innovation", "Flux intégrés, résilients et collaboratifs", "IA, machine learning et blockchain", "Impact économique et stratégique"] },
+    ],
+  },
+  "Responsable Logistique & ADV": {
+    niveaux: [
+      { code: "CPLOG-1", niveau: "Débutant", duree: "30h", contenu: ["Flux physiques et processus ADV", "Traiter commandes, organiser expéditions et suivi", "Disponibilité des produits et maîtrise des coûts", "Outils bureautiques et ERP"] },
+      { code: "CPLOG-2", niveau: "Avancé", duree: "40h", contenu: ["Démarche orientée client", "ABC, FIFO, LIFO et productivité entrepôt", "Planification transport et satisfaction client", "KPI de performance logistique"] },
+      { code: "CPLOG-3", niveau: "Expert", duree: "50h", contenu: ["Enjeux internationaux, durabilité et optimisation", "WMS, TMS, IA et blockchain", "Anticiper disruptions et sécuriser approvisionnements", "Concilier coûts, satisfaction client et normes environnementales"] },
+    ],
+  },
+  "Responsable de Production": {
+    niveaux: [
+      { code: "CPPRO-1", niveau: "Débutant", duree: "30h", contenu: ["Bases de planification, ordonnancement et suivi", "Affectation des ressources efficacement", "Étapes critiques et réduction des pertes", "Indicateurs TRS, délais, taux de rebuts"] },
+      { code: "CPPRO-2", niveau: "Avancé", duree: "40h", contenu: ["Plannings optimisés selon contraintes et prévisions", "Lean, Kaizen et Six Sigma", "Compétences managériales pour les équipes", "Leviers de réduction des coûts"] },
+      { code: "CPPRO-3", niveau: "Expert", duree: "50h", contenu: ["Politiques de production stratégiques", "ERP, IoT, automatisation et amélioration continue", "Stratégies de résilience face aux disruptions", "Équilibre coûts, délais, qualité et environnement"] },
+    ],
+  },
+  "Responsable Supply Chain": {
+    niveaux: [
+      { code: "CPSCM-1", niveau: "Débutant", duree: "30h", contenu: ["Flux physiques, d'information et financiers", "Approvisionnements, stocks et flux logistiques", "Identifier les inefficacités et proposer des solutions", "Excel et ERP"] },
+      { code: "CPSCM-2", niveau: "Avancé", duree: "40h", contenu: ["Aligner sur objectifs coûts, délais et qualité", "MRP et gestion avancée des stocks", "Relations fournisseurs, transporteurs et parties prenantes", "KPI d'efficacité et d'agilité"] },
+      { code: "CPSCM-3", niveau: "Expert", duree: "50h", contenu: ["Stratégies intégrées internationales", "IoT, blockchain, IA et écoresponsabilité", "Modèles agiles face aux changements du marché", "Impacts financiers, opérationnels et environnementaux"] },
+    ],
+  },
+};
+
+// Filière courante sélectionnée (pour le flow étape 2→3)
+let _selectedType = null;
+
 // ─── Données outils ECT avec liens ───────────────────────────────────────────
 const OUTILS_DATA = {
   "SECTINEL Upstream (IA Achats)": {
@@ -393,19 +494,23 @@ export default function ZikaChatbot() {
         }
       }
       if (flowState.type === "formation" && flowState.step === 1) {
-        setFlowState(null);
         const fd = FORMATION_DATA[text];
-        if (fd) {
-          // Réponse directe depuis les données du catalogue — pas d'appel IA
+        const filieresOpts = FILIERES_DATA[text];
+        if (fd && filieresOpts) {
+          // Infos complètes + boutons filières en une seule réponse
+          _selectedType = text;
+          setFlowState({ type: "formation_filiere", step: 2, data: { type: text } });
+          const msg = `📚 ${text}\n\n${fd.desc}\n\n⏱️ Durée : ${fd.duree}\n🗓️ Horaires : ${fd.horaires}\n\n💡 ${fd.note}\n🔗 ${fd.lien}\n\nChoisissez un domaine pour les détails :`;
+          addMessage("bot", msg, filieresOpts);
+        } else if (fd) {
+          setFlowState(null);
           const filieres = fd.filières.join("\n");
-          const msg = `📚 ${text}\n\n${fd.desc}\n\n⏱️ Durée : ${fd.duree}\n🗓️ Horaires : ${fd.horaires}\n\n📋 Contenu / Filières :\n${filieres}\n\n💡 ${fd.note}\n\n🔗 Voir le détail : ${fd.lien}\n\n📧 Inscription : commercial@ect.ci\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50`;
+          const msg = `📚 ${text}\n\n${fd.desc}\n\n⏱️ ${fd.duree}\n🗓️ ${fd.horaires}\n\n📋 Contenu :\n${filieres}\n\n💡 ${fd.note}\n🔗 ${fd.lien}\n\n📧 commercial@ect.ci\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50`;
           addMessage("bot", msg);
         } else {
+          setFlowState(null);
           setIsLoading(true);
-          const reply = await callBackend(
-            `Un prospect ECT s'intéresse aux "${text}" du Catalogue 2026. Présente ce type de formation en détail et invite à consulter https://catalogue-formations-ect-2026.netlify.app/ ou à contacter commercial@ect.ci.`,
-            `Type de formation demandé : ${text}`
-          );
+          const reply = await callBackend(`Un prospect ECT s'intéresse aux "${text}" du Catalogue 2026.`, `Type : ${text}`);
           setIsLoading(false);
           addMessage("bot", reply);
         }
@@ -421,8 +526,14 @@ export default function ZikaChatbot() {
           return;
         }
         if (text === "Obtenir un devis") {
+          const link = document.createElement("a");
+          link.href = "/fiche-portage-salarial.xltx";
+          link.download = "Fiche_Renseignement_Portage_Salarial_ECT.xltx";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
           addMessage("bot",
-            "Pour obtenir un devis portage salarial personnalisé, envoyez-nous :\n\n• Le nombre de salariés concernés\n• La durée de la mission\n• Votre secteur d'activité\n\n📧 commercial@ect.ci\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50\n\nNos consultants vous répondent sous 24h."
+            "📥 Le téléchargement de votre fiche de renseignement a démarré !\n\n📋 Remplissez la fiche avec :\n• Les postes et intitulés\n• Les salaires nets souhaités (FCFA)\n• Les dates de contrat\n• La situation de chaque salarié\n\nRetournez-la remplie à :\n📧 commercial@ect.ci\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50\n\nNos consultants vous enverront un devis précis sous 24h."
           );
           return;
         }
@@ -471,16 +582,33 @@ export default function ZikaChatbot() {
     }
 
     // ── Priorité 2 : Formations ──────────────────────────────────────────────
-    // Si le texte est déjà un type de formation exact → réponse directe
+    // Type de formation exact → infos complètes + filières en une réponse
+    if (FORMATION_DATA[text]) {
+      const fd = FORMATION_DATA[text];
+      const filieresOpts = FILIERES_DATA[text];
+      if (filieresOpts) {
+        _selectedType = text;
+        setFlowState({ type: "formation_filiere", step: 2, data: { type: text } });
+        const msg = `📚 ${text}\n\n${fd.desc}\n\n⏱️ Durée : ${fd.duree}\n🗓️ Horaires : ${fd.horaires}\n\n💡 ${fd.note}\n🔗 ${fd.lien}\n\nChoisissez un domaine pour les détails :`;
+        addMessage("bot", msg, filieresOpts);
+      } else {
+        setFlowState(null);
+        const filieres = fd.filières.join("\n");
+        const msg = `📚 ${text}\n\n${fd.desc}\n\n⏱️ ${fd.duree}\n🗓️ ${fd.horaires}\n\n📋 Contenu :\n${filieres}\n\n💡 ${fd.note}\n🔗 ${fd.lien}\n\n📧 commercial@ect.ci\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50`;
+        addMessage("bot", msg);
+      }
+      return;
+    }
+    // Si type sans filières → réponse directe (fallback)
     if (FORMATION_DATA[text]) {
       setFlowState(null);
       const fd = FORMATION_DATA[text];
       const filieres = fd.filières.join("\n");
-      const msg = `📚 ${text}\n\n${fd.desc}\n\n⏱️ Durée : ${fd.duree}\n🗓️ Horaires : ${fd.horaires}\n\n📋 Contenu / Filières :\n${filieres}\n\n💡 ${fd.note}\n\n🔗 Voir le détail : ${fd.lien}\n\n📧 Inscription : commercial@ect.ci\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50`;
+      const msg = `📚 ${text}\n\n${fd.desc}\n\n⏱️ Durée : ${fd.duree}\n🗓️ Horaires : ${fd.horaires}\n\n📋 Contenu :\n${filieres}\n\n💡 ${fd.note}\n\n🔗 Voir le détail : ${fd.lien}\n\n📧 Inscription : commercial@ect.ci\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50`;
       addMessage("bot", msg);
       return;
     }
-    // Sinon → mot-clé formation → afficher le menu des types
+    // Mot-clé formation → afficher le menu des types
     if (lower.match(/(^nos formations$|formation|séminaire|certificat|certif|apprendre|cours|programme|inscription|inscrire|pecb)/)) {
       setFlowState({ type: "formation", step: 1, data: {} });
       addMessage("bot",
