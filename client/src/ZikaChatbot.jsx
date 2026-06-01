@@ -187,8 +187,10 @@ const FILIERES_DATA = {
   ],
 };
 
-// ─── Détails par filière ──────────────────────────────────────────────────────
+// ─── Détails par filière — Contenu réel du Catalogue 2026 ECT ───────────────
 const DETAILS_FILIERES = {
+
+  // ── Certificats Professionnels ─────────────────────────────────────────────
   "Responsable Achats": {
     niveaux: [
       { code: "CPACH-1", niveau: "Débutant", duree: "30h", contenu: ["Situer la fonction achats dans la chaîne de valeur", "Structurer un processus d'achat complet", "Maîtriser les techniques de négociation", "Évaluer, sélectionner et suivre les fournisseurs"] },
@@ -223,6 +225,295 @@ const DETAILS_FILIERES = {
       { code: "CPSCM-2", niveau: "Avancé", duree: "40h", contenu: ["Aligner sur objectifs coûts, délais et qualité", "MRP et gestion avancée des stocks", "Relations fournisseurs, transporteurs et parties prenantes", "KPI d'efficacité et d'agilité"] },
       { code: "CPSCM-3", niveau: "Expert", duree: "50h", contenu: ["Stratégies intégrées internationales", "IoT, blockchain, IA et écoresponsabilité", "Modèles agiles face aux changements du marché", "Impacts financiers, opérationnels et environnementaux"] },
     ],
+  },
+
+  // ── Certificats Pratiques ──────────────────────────────────────────────────
+  "Acheteur Opérationnel": {
+    desc: "Certificat Pratique Acheteur (FPACH) — 40 heures",
+    modules: [
+      "Processus fondamentaux des achats jusqu'à la gestion des fournisseurs",
+      "Négocier efficacement pour les meilleures conditions coût, qualité, délais",
+      "Identifier, évaluer et sélectionner les fournisseurs",
+      "Outils pratiques de suivi des coûts et mesure des performances",
+    ],
+    horaires: "Samedis 08H–14H (présentiel/en ligne) | Lundis & Mercredis 19H–21H (en ligne)",
+  },
+  "Approvisionneur": {
+    desc: "Certificat Pratique Approvisionneur & Gestionnaire de Stock (FPAPP) — 40 heures",
+    modules: [
+      "Processus d'approvisionnement de l'identification des besoins à la réception",
+      "Équilibrer disponibilité des produits et coûts de stockage",
+      "Exploiter Excel ou ERP pour suivre, analyser et automatiser",
+      "Indicateurs clés : rotations, taux de rupture, taux de service",
+    ],
+    horaires: "Samedis 08H–14H (présentiel/en ligne) | Lundis & Mercredis 19H–21H (en ligne)",
+  },
+  "Logisticien": {
+    desc: "Certificat Pratique Logisticien d'Entrepôt (FPLOG) — 40 heures",
+    modules: [
+      "Principes de stockage, manutention et gestion des flux",
+      "Organiser les zones de stockage et maximiser l'espace",
+      "WMS, Excel, codes-barres et RFID pour le suivi",
+      "Optimisation des processus et normes de sécurité",
+    ],
+    horaires: "Samedis 08H–14H (présentiel/en ligne) | Lundis & Mercredis 19H–21H (en ligne)",
+  },
+  "Transitaire": {
+    desc: "Certificat Pratique Agent Transit / Transitaire (FPATD) — 40 heures",
+    modules: [
+      "Processus et réglementations du transport international et dédouanement",
+      "Préparer et contrôler les documents requis",
+      "Coordonner les flux en respectant délais et coûts",
+      "Collaborer avec transporteurs, douanes et parties prenantes",
+    ],
+    horaires: "Samedis 08H–14H (présentiel/en ligne) | Lundis & Mercredis 19H–21H (en ligne)",
+  },
+  "Qualité": {
+    desc: "Certificat Pratique Assistant / Responsable Qualité (FPQUA) — 40 heures",
+    modules: [
+      "Fondements du management de la qualité",
+      "Norme ISO 9001 et ses exigences clés",
+      "Outils et techniques d'évaluation et d'amélioration",
+      "Préparer, réaliser et documenter des audits qualité",
+      "Faciliter les réunions et promouvoir l'amélioration continue",
+    ],
+    horaires: "Samedis 08H–14H (présentiel/en ligne) | Lundis & Mercredis 19H–21H (en ligne)",
+  },
+
+  // ── Séminaires Intra/Inter ─────────────────────────────────────────────────
+  "Achats & Patrimoine": {
+    desc: "Séminaires Achats & Patrimoine — 2 à 3 jours",
+    modules: [
+      "ACH01 — Définir et conduire une stratégie d'achats efficace (3j)",
+      "ACH02 — Programme de gestion du patrimoine selon ISO 55001 (3j)",
+      "ACH03 — Plan de sûreté chaîne d'approvisionnement selon ISO 28000 (3j)",
+      "ACH04 — Exigences environnementales ISO 14001 dans le processus Achat (2j)",
+      "ACH05 — Exigences énergétiques ISO 50001 dans le processus Achat (2j)",
+      "ACH06 — Gérer efficacement les risques fournisseurs (2j)",
+    ],
+    horaires: "Sessions planifiées en présentiel à Abidjan ou dans vos locaux",
+  },
+  "Gestion Industrielle": {
+    desc: "Séminaires Gestion Industrielle — 3 jours",
+    modules: [
+      "IND01 — Planifier et piloter sa production (3j)",
+      "IND02 — Ordonnancement et planning d'atelier (3j)",
+      "IND03 — Automatiser la mesure du TRS et améliorer la productivité (3j)",
+    ],
+    horaires: "Sessions planifiées en présentiel à Abidjan ou dans vos locaux",
+  },
+  "Supply Chain": {
+    desc: "Séminaires Supply Chain — 3 jours",
+    modules: [
+      "SUP-01 — Stratégie pour conduire un projet de réduction des stocks (3j)",
+      "SUP-02 — Tableau de bord avec Excel & PowerQuery (3j)",
+      "SUP-03 — Construire et fiabiliser ses prévisions de vente (3j)",
+      "SUP-04 — Conduire et piloter un processus Demand Planning (3j)",
+    ],
+    horaires: "Sessions planifiées en présentiel à Abidjan ou dans vos locaux",
+  },
+  "QHSE": {
+    desc: "Séminaires QHSE — 20 heures chacun",
+    modules: [
+      "QUA-01 — Exigences et bonnes pratiques de l'ISO 9001 (20h)",
+      "QUA-02 — Exigences et bonnes pratiques de l'ISO 14001 (20h)",
+    ],
+    horaires: "Sessions planifiées en présentiel à Abidjan ou dans vos locaux",
+  },
+  "Autres thèmes disponibles": {
+    desc: "D'autres thèmes sur mesure sont disponibles selon vos besoins.",
+    modules: [
+      "Contactez-nous pour un programme adapté à votre secteur",
+      "Format intra : dans vos locaux, contenu personnalisé",
+      "Format inter : sessions ouvertes, échanges entre entreprises",
+    ],
+    horaires: "Sessions planifiées selon vos disponibilités",
+  },
+
+  // ── Formations à la Carte ──────────────────────────────────────────────────
+  "Administration & Gestion": {
+    desc: "Formations Administration & Gestion — 2 à 3 jours",
+    modules: [
+      "GES-01 — Assistant Audit Interne & Contrôle (3j)",
+      "GES-02 — Gestion des Risques PME (3j)",
+      "GES-03 — Comptabilité pratique et déclarations fiscales (3j)",
+      "GES-04 — Analyse de données — Business Intelligence (3j)",
+      "ADM-01 — Secrétariat de Direction et Archivage numérique (3j)",
+      "ADM-02 — Conduite et rapportage de réunions (2j)",
+      "ADM-04 — Bureautique avancée : Maîtrise du Pack Office (3j)",
+      "ADM-05 — Élaboration d'un Business Plan (3j)",
+    ],
+    horaires: "Planifiées selon vos disponibilités — présentiel ou en ligne",
+  },
+  "Audit & Conformité": {
+    desc: "Formations Audit & Conformité — 3 jours",
+    modules: [
+      "GES-05 — Les fondamentaux de l'Audit Interne (3j)",
+      "GES-06 — Outils d'analyse de problèmes (Ishikawa, 5 Pourquoi, QQOQCP) (3j)",
+      "GES-07 — Rédaction efficace de rapports d'audit (3j)",
+      "GES-08 — Initiation au Contrôle Interne et cartographie des risques (3j)",
+      "GES-09 — Audit et Communication : Conduite d'entretien et restitution (3j)",
+    ],
+    horaires: "Planifiées selon vos disponibilités — présentiel ou en ligne",
+  },
+  "Normes ISO": {
+    desc: "Formations Normes & Certifications ISO — 1 à 3 jours",
+    modules: [
+      "NOR-01 — Sûreté de la chaîne d'approvisionnement selon ISO 28000 (3j)",
+      "NOR-02 — Gestion des actifs selon ISO 55001 (3j)",
+      "NOR-03 — Management anti-corruption selon ISO 37001 (3j)",
+      "NOR-04 — Continuité des activités selon ISO 22301 (3j)",
+      "NOR-05 — Management de la qualité selon ISO 9001 (3j)",
+      "NOR-09 — Système de management intégré QHSE (3j)",
+      "NOR-12 — MQAS pour la chaîne d'approvisionnement pharmaceutique (3j)",
+    ],
+    horaires: "Planifiées selon vos disponibilités — présentiel ou en ligne",
+  },
+  "Informatique & Excel": {
+    desc: "Formations Informatique & Digital — 3 jours",
+    modules: [
+      "INF-01 — Community Management & Marketing Digital (3j)",
+      "INF-02 — Maintenance Informatique et Réseaux (3j)",
+      "INF-03 — Bureautique Avancée Excel Expert (3j)",
+      "INF-04 — Développement Web WordPress/No-Code (3j)",
+      "INF-05 — Infographie et Design publicitaire (3j)",
+      "INF-06 — L'IA pour le jeune entrepreneur (3j)",
+      "EXP-01 — Maîtriser Excel et Gagner en Efficacité (3j)",
+      "EXP-02 — Construire des Reportings et Tableaux de Bord sous Excel (3j)",
+    ],
+    horaires: "Planifiées selon vos disponibilités — présentiel ou en ligne",
+  },
+  "Supply Chain & Logistique": {
+    desc: "Formations Supply Chain, Logistique & Distribution — 2 à 5 jours",
+    modules: [
+      "SCP-01 — Fondamentaux du Management Industriel et Supply Chain (5j)",
+      "SCP-02 — Mettre en place et Pilotage du Processus S&OP (3j)",
+      "SCP-03 — Techniques de Prévisions de la Demande (3j)",
+      "SCP-04 — Analyser et Optimiser les Coûts Logistiques (3j)",
+      "LOD-01 — Mesurer et Animer la Performance OTIF (3j)",
+      "LOD-02 — Manager et Piloter la Performance d'un Entrepôt (3j)",
+      "LOD-05 — Gestion des Transports et de la Distribution (3j)",
+      "LOD-06 — Gestion des Entrepôts et Logistique Interne (3j)",
+    ],
+    horaires: "Planifiées selon vos disponibilités — présentiel ou en ligne",
+  },
+  "Achats opérationnels": {
+    desc: "Formations Sourcing & Achats — 2 jours",
+    modules: [
+      "SAC01 — Construire une Stratégie Achats — Levier Stratégique (2j)",
+      "SAC02 — Maîtriser les Techniques d'Optimisation des Achats (2j)",
+      "SAC03 — Stratégies de Sourcing et Gestion des Fournisseurs (2j)",
+      "SAC10 — Le cycle Achat complet : Du besoin à la facturation (2j)",
+      "SAC11 — Techniques de négociation Achat pour débutants (2j)",
+      "SAC12 — Transit et Douane (Procédures import-export) (2j)",
+      "AGS-01 — Optimisation des Approvisionnements et Réduction des Stocks (3j)",
+      "AGS-05 — Assistant Achat et Approvisionnement (3j)",
+    ],
+    horaires: "Planifiées selon vos disponibilités — présentiel ou en ligne",
+  },
+
+  // ── Séminaires Internationaux ──────────────────────────────────────────────
+  "INT01 — Gestion du Patrimoine": {
+    desc: "Séminaire International — Gestion du Patrimoine (3 semaines)",
+    modules: ["Stratégie et politique de gestion des actifs", "Norme ISO 55001 appliquée", "Audit et valorisation du patrimoine", "Renouvellement et performance des actifs"],
+    horaires: "Sessions annuelles — Abidjan & Assinie / Paris / Dubaï / Casablanca",
+  },
+  "INT02 — Logistique & Moyens Généraux": {
+    desc: "Séminaire International — Logistique & Moyens Généraux (3 semaines)",
+    modules: ["Gestion opérationnelle des moyens généraux", "Optimisation des flux logistiques", "Gestion des contrats et prestataires", "Pratiques écoresponsables et innovation"],
+    horaires: "Sessions annuelles — Abidjan & Assinie / Paris / Dubaï / Casablanca",
+  },
+  "INT03 — Gestion des Stocks & Approvisionnements": {
+    desc: "Séminaire International — Gestion des Stocks & Approvisionnements (2 semaines)",
+    modules: ["Optimisation des niveaux de stocks", "Planification des approvisionnements MRP", "Indicateurs de performance stocks", "Réduction des ruptures et sur-stocks"],
+    horaires: "Sessions annuelles — Abidjan & Assinie / Paris / Dubaï / Casablanca",
+  },
+  "INT04 — Zéro Rupture, Zéro Sur-stock": {
+    desc: "Séminaire International — Zéro Rupture, Zéro Sur-stock (2 semaines)",
+    modules: ["Techniques avancées de prévision de la demande", "S&OP et planification collaborative", "Outils de pilotage Excel et PowerQuery", "Construire un tableau de bord Supply Chain"],
+    horaires: "Sessions annuelles — Abidjan & Assinie / Paris / Dubaï / Casablanca",
+  },
+  "INT05 — Maîtrise du Risque Crédit": {
+    desc: "Séminaire International — Maîtrise du Risque Crédit (2 semaines)",
+    modules: ["Analyse et évaluation du risque client", "Outils de couverture et garanties", "Gestion du recouvrement", "Stratégies de trésorerie face aux risques"],
+    horaires: "Sessions annuelles — Abidjan & Assinie / Paris / Dubaï / Casablanca",
+  },
+  "INT06 — Stratégies de Trésorerie": {
+    desc: "Séminaire International — Stratégies de Trésorerie & Culture Cash (2 semaines)",
+    modules: ["Gestion prévisionnelle de la trésorerie", "Optimisation du besoin en fonds de roulement", "Culture cash dans l'entreprise", "Instruments financiers et couverture de change"],
+    horaires: "Sessions annuelles — Abidjan & Assinie / Paris / Dubaï / Casablanca",
+  },
+  "INT07 — ZLECAF : Opportunités Douanières": {
+    desc: "Séminaire International — ZLECAF & Opportunités Douanières (2 semaines)",
+    modules: ["Enjeux et opportunités de la Zone de Libre-Échange Continentale Africaine", "Procédures douanières import-export", "Réglementation et conformité commerciale", "Stratégies d'expansion en Afrique"],
+    horaires: "Sessions annuelles — Abidjan & Assinie / Paris / Dubaï / Casablanca",
+  },
+  "INT08 — Business Résilience ISO 22301": {
+    desc: "Séminaire International — Business Résilience ISO 22301 (2 semaines)",
+    modules: ["Comprendre la norme ISO 22301", "Plan de continuité des activités (PCA)", "Analyse d'impact métier (BIA)", "Exercices de simulation de crise"],
+    horaires: "Sessions annuelles — Abidjan & Assinie / Paris / Dubaï / Casablanca",
+  },
+  "INT09 — Gestion des Risques ISO 31000": {
+    desc: "Séminaire International — Gestion des Risques Projets ISO 31000 (2 semaines)",
+    modules: ["Cadre de management des risques ISO 31000", "Identification et évaluation des risques projets", "Cartographie et traitement des risques", "Intégration dans les processus de l'entreprise"],
+    horaires: "Sessions annuelles — Abidjan & Assinie / Paris / Dubaï / Casablanca",
+  },
+  "INT10 — Efficacité Énergétique": {
+    desc: "Séminaire International — Efficacité Énergétique (2 semaines)",
+    modules: ["Diagnostic énergétique de l'entreprise", "Norme ISO 50001 — Management de l'énergie", "Leviers de réduction de la consommation", "Suivi et mesure de la performance énergétique"],
+    horaires: "Sessions annuelles — Abidjan & Assinie / Paris / Dubaï / Casablanca",
+  },
+  "INT11 — Pilotage de la Performance Industrielle": {
+    desc: "Séminaire International — Pilotage de la Performance Industrielle (2 semaines)",
+    modules: ["Indicateurs de performance industrielle (TRS, OEE)", "Lean Manufacturing et amélioration continue", "Planification et ordonnancement de production", "Stratégie de performance globale"],
+    horaires: "Sessions annuelles — Abidjan & Assinie / Paris / Dubaï / Casablanca",
+  },
+
+  // ── Certifications PECB ───────────────────────────────────────────────────
+  "ISO 9001 — Management Qualité": {
+    desc: "Certification PECB — ISO 9001 Lead Auditor / Lead Implementer",
+    modules: ["Exigences de la norme ISO 9001:2015", "Mise en place d'un SMQ", "Conduite d'audits internes et externes", "Formules : Foundation / Lead Implementer / Lead Auditor"],
+    horaires: "Auto-formation en ligne — max 12 mois | Examens planifiés par PECB",
+  },
+  "ISO 14001 — Environnement": {
+    desc: "Certification PECB — ISO 14001 Lead Auditor / Lead Implementer",
+    modules: ["Exigences du management environnemental", "Identification des aspects et impacts", "Système de management environnemental (SME)", "Formules : Foundation / Lead Implementer / Lead Auditor"],
+    horaires: "Auto-formation en ligne — max 12 mois | Examens planifiés par PECB",
+  },
+  "ISO 22301 — Continuité d'Activité": {
+    desc: "Certification PECB — ISO 22301 Lead Auditor / Lead Implementer",
+    modules: ["Plan de continuité des activités (PCA)", "Analyse d'impact métier (BIA)", "Tests et exercices de continuité", "Formules : Foundation / Lead Implementer / Lead Auditor"],
+    horaires: "Auto-formation en ligne — max 12 mois | Examens planifiés par PECB",
+  },
+  "ISO 27001 — Sécurité de l'Information": {
+    desc: "Certification PECB — ISO 27001 Lead Auditor / Lead Implementer",
+    modules: ["Exigences de sécurité de l'information", "Évaluation et traitement des risques SI", "Mise en place d'un SMSI", "Formules : Foundation / Lead Implementer / Lead Auditor"],
+    horaires: "Auto-formation en ligne — max 12 mois | Examens planifiés par PECB",
+  },
+  "ISO 28000 — Sûreté Supply Chain": {
+    desc: "Certification PECB — ISO 28000 Lead Auditor / Lead Implementer",
+    modules: ["Sûreté de la chaîne d'approvisionnement", "Analyse des menaces et vulnérabilités", "Plan de sûreté et mesures de protection", "Formules : Foundation / Lead Implementer / Lead Auditor"],
+    horaires: "Auto-formation en ligne — max 12 mois | Examens planifiés par PECB",
+  },
+  "ISO 31000 — Gestion des Risques": {
+    desc: "Certification PECB — ISO 31000 Lead Risk Manager",
+    modules: ["Cadre et principes du management des risques", "Processus d'identification et d'évaluation", "Traitement et surveillance des risques", "Formules : Foundation / Lead Risk Manager"],
+    horaires: "Auto-formation en ligne — max 12 mois | Examens planifiés par PECB",
+  },
+  "ISO 45001 — Santé & Sécurité": {
+    desc: "Certification PECB — ISO 45001 Lead Auditor / Lead Implementer",
+    modules: ["Exigences santé et sécurité au travail", "Identification des dangers et évaluation des risques", "Système de management SST", "Formules : Foundation / Lead Implementer / Lead Auditor"],
+    horaires: "Auto-formation en ligne — max 12 mois | Examens planifiés par PECB",
+  },
+  "ISO 50001 — Management Énergie": {
+    desc: "Certification PECB — ISO 50001 Lead Auditor / Lead Implementer",
+    modules: ["Exigences du management de l'énergie", "Revue énergétique et baseline", "Objectifs et plans d'action énergie", "Formules : Foundation / Lead Implementer / Lead Auditor"],
+    horaires: "Auto-formation en ligne — max 12 mois | Examens planifiés par PECB",
+  },
+  "ISO 55001 — Gestion des Actifs": {
+    desc: "Certification PECB — ISO 55001 Lead Auditor / Lead Implementer",
+    modules: ["Exigences du management des actifs", "Plan stratégique de gestion des actifs (SAMP)", "Cycle de vie des actifs et performance", "Formules : Foundation / Lead Implementer / Lead Auditor"],
+    horaires: "Auto-formation en ligne — max 12 mois | Examens planifiés par PECB",
   },
 };
 
@@ -497,7 +788,6 @@ export default function ZikaChatbot() {
         const fd = FORMATION_DATA[text];
         const filieresOpts = FILIERES_DATA[text];
         if (fd && filieresOpts) {
-          // Infos complètes + boutons filières en une seule réponse
           _selectedType = text;
           setFlowState({ type: "formation_filiere", step: 2, data: { type: text } });
           const msg = `📚 ${text}\n\n${fd.desc}\n\n⏱️ Durée : ${fd.duree}\n🗓️ Horaires : ${fd.horaires}\n\n💡 ${fd.note}\n🔗 ${fd.lien}\n\nChoisissez un domaine pour les détails :`;
@@ -513,6 +803,43 @@ export default function ZikaChatbot() {
           const reply = await callBackend(`Un prospect ECT s'intéresse aux "${text}" du Catalogue 2026.`, `Type : ${text}`);
           setIsLoading(false);
           addMessage("bot", reply);
+        }
+        return;
+      }
+
+      // Étape 2 : filière choisie → contenu réel du catalogue
+      if (flowState.type === "formation_filiere" && flowState.step === 2) {
+        setFlowState(null);
+        const details = DETAILS_FILIERES[text];
+        const typeChoisi = flowState.data?.type || _selectedType;
+        const fd = FORMATION_DATA[typeChoisi];
+        const lien = fd ? fd.lien : "https://catalogue-formations-ect-2026.netlify.app/";
+
+        if (details && details.niveaux) {
+          // Certificats Professionnels — 3 niveaux
+          let msg = `🎓 ${text}\n\n`;
+          details.niveaux.forEach(n => {
+            msg += `━━ ${n.code} — ${n.niveau} (${n.duree}) ━━\n`;
+            n.contenu.forEach(c => { msg += `  • ${c}\n`; });
+            msg += "\n";
+          });
+          msg += `🗓️ Horaires : ${fd ? fd.horaires : "Samedis 08H–14H | Mardis & Jeudis 19H–21H"}\n`;
+          msg += `🔗 ${lien}\n📧 commercial@ect.ci\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50`;
+          addMessage("bot", msg);
+        } else if (details && details.modules) {
+          // Autres filières — contenu réel du catalogue
+          const modules = details.modules.map(m => `  • ${m}`).join("\n");
+          const msg = `📋 ${details.desc}\n\n📌 Modules / Thèmes :\n${modules}\n\n🗓️ ${details.horaires}\n🔗 ${lien}\n📧 commercial@ect.ci\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50`;
+          addMessage("bot", msg);
+        } else {
+          // Fallback IA
+          setIsLoading(true);
+          const reply = await callBackend(
+            `Un prospect ECT s'intéresse à la formation "${text}" dans la catégorie "${typeChoisi}". Donne les détails spécifiques du catalogue ECT 2026 et invite à contacter commercial@ect.ci.`,
+            `Filière : ${text} | Catégorie : ${typeChoisi}`
+          );
+          setIsLoading(false);
+          addMessage("bot", reply + `\n\n🔗 ${lien}\n📧 commercial@ect.ci\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50`);
         }
         return;
       }
