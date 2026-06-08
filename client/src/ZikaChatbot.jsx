@@ -945,8 +945,16 @@ export default function ZikaChatbot() {
       return;
     }
 
-    // ── Priorité 3 : Conseil & Audit ─────────────────────────────────────────
-    if (lower.match(/(conseil|diagnostic|accompagn|audit)/) && !text.includes("outils")) {
+    // ── Priorité 3 : Conseil — UNIQUEMENT sur demande explicite ─────────────
+    // Ne déclenche PAS le flow pour les questions opérationnelles
+    const conseilExplicite = (
+      text === "Demander un conseil" ||
+      lower.match(/^(je veux|je souhaite|j'aimerais).*(conseil|audit|diagnostic|accompagnement)/) ||
+      lower.match(/^(demander|avoir|obtenir).*(conseil|audit|diagnostic)/) ||
+      lower.match(/^(conseil|audit|diagnostic)\s*$/) ||
+      lower === "demander un conseil"
+    );
+    if (conseilExplicite && !text.includes("outils")) {
       setFlowState({ type: "conseil", step: 1, data: {} });
       addMessage("bot",
         "ECT propose des audits et conseils personnalisés pour renforcer la performance de votre organisation.\n\nDans quel secteur d'activité évolue votre entreprise ?",
@@ -974,19 +982,22 @@ export default function ZikaChatbot() {
       return;
     }
 
-    // Fallback : tenter FAQ/IA, si réponse vague → rediriger commercial
+    // ── Fallback : FAQ enrichie + IA ────────────────────────────────────────
+    // Toutes les questions opérationnelles (stocks, logistique, achats, ISO...)
+    // sont traitées ici via la FAQ de 44 entrées + Claude en backup
     setIsLoading(true);
     const reply = await callBackend(text);
     setIsLoading(false);
-    // Si la réponse IA semble vague ou si question complexe → ajouter redirection
-    const vagueKeywords = ["je ne sais pas", "je n'ai pas", "je suis désolé", "contactez", "n'ai pas pu", "pas d'information"];
+    const vagueKeywords = ["je ne sais pas", "je n'ai pas", "je suis désolé", "n'ai pas pu", "pas d'information", "cannot", "don't have"];
     const isVague = vagueKeywords.some(k => reply.toLowerCase().includes(k));
     if (isVague) {
       addMessage("bot",
-        reply + "\n\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50\n📧 commercial@ect.ci\n🌐 www.ect.ci"
+        "Pour cette question spécifique, nos consultants ECT sont les mieux placés pour vous répondre.\n\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50\n📧 commercial@ect.ci\n🌐 www.ect.ci"
       );
     } else {
-      addMessage("bot", reply);
+      // Ajouter les coordonnées si la réponse mentionne de contacter ECT
+      const mentionneContact = reply.toLowerCase().includes("commercial@ect.ci") || reply.toLowerCase().includes("contactez");
+      addMessage("bot", reply + (mentionneContact ? "" : "\n\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50\n📧 commercial@ect.ci"));
     }
   }, [flowState, addMessage]);
 
