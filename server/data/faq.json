@@ -148,7 +148,6 @@
       "massification",
       "négociation",
       "sourcing",
-      "ema",
       "savings"
     ]
   },
@@ -158,7 +157,6 @@
     "answer": "ECT utilise l'outil EMA (Évaluation de la Maturité Achats) qui analyse votre département sous plusieurs angles : gouvernance, processus, outils, compétences et performance. Le diagnostic débouche sur une feuille de route de professionnalisation.\n\nNous accompagnons aussi la structuration de la politique achats, des procédures et des indicateurs de pilotage.\n\nPlus d'infos : commercial@ect.ci",
     "keywords": [
       "maturité achats",
-      "ema",
       "gouvernance",
       "fonction achats",
       "organisation",
@@ -173,7 +171,6 @@
       "achats durables",
       "responsables",
       "rse",
-      "enva",
       "environnement",
       "critères durables",
       "achats verts"
@@ -185,7 +182,6 @@
     "answer": "ECT propose une démarche complète : l'outil PSA permet l'auto-évaluation des compétences de vos acheteurs face aux meilleures pratiques métier, puis nos formations (Certificat professionnel, Certificat pratique en Achats) comblent les écarts identifiés.\n\nC'est une approche qui relie diagnostic et plan de formation sur mesure.\n\nPlus d'infos : commercial@ect.ci",
     "keywords": [
       "compétences acheteurs",
-      "psa",
       "formation achats",
       "professionnalisation",
       "évaluation",
@@ -338,7 +334,6 @@
       "actifs",
       "asset management",
       "55001",
-      "sectinel i55",
       "cycle de vie",
       "renouvellement",
       "patrimoine",
@@ -429,9 +424,6 @@
       "sécurité",
       "résilience",
       "28000",
-      "sectinel i28",
-      "safe supplier",
-      "upstream",
       "visibilité"
     ]
   },
@@ -503,7 +495,6 @@
       "plan de sûreté",
       "politique de sûreté",
       "28000",
-      "sectinel i28",
       "vulnérabilité",
       "menace",
       "chaîne d'approvisionnement"
@@ -542,73 +533,122 @@
     ]
   },
   {
-    "theme": "Général",
-    "question": "C'est quoi ECT ?",
-    "answer": "Eburnis Conseil & Technologies (ECT) est un cabinet spécialisé en audit, conseil et formation basé à Abidjan, Côte d'Ivoire.\n\nECT garantit la performance, la sûreté et la pérennité de votre activité à travers 4 domaines : Audit & Conseil, Formation, Portage salarial et Projets innovants.\n\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50\n📧 ect@ect.ci\n🌐 www.ect.ci",
+    "theme": "Outils & Produits ECT",
+    "question": "C'est quoi l'outil EMA d'ECT ?",
+    "answer": "EMA (Évaluation de la Maturité Achats) est l'outil d'ECT qui diagnostique votre fonction Achats sous plusieurs angles : gouvernance, processus, outils, compétences et performance.\n\nÀ la clé : une cartographie de vos gisements d'économies et une feuille de route de professionnalisation pour transformer vos Achats en levier stratégique plutôt qu'en simple centre de coûts.\n\nPour une démonstration ou un diagnostic adapté à votre contexte : commercial@ect.ci",
     "keywords": [
-      "ect",
-      "eburnis",
-      "cabinet",
-      "entreprise",
-      "qui",
-      "société",
-      "présentation",
-      "c'est quoi"
+      "ema",
+      "maturité achats",
+      "évaluation achats",
+      "diagnostic achats",
+      "gouvernance achats",
+      "outil achats"
     ]
   },
   {
-    "theme": "Général",
-    "question": "Quelle est la vision et la mission d'ECT ?",
-    "answer": "🎯 Vision : Être la référence continentale dans le développement de la résilience des chaînes de valeurs.\n\n🏆 Mission : Assurer la continuité et la performance des organisations.\n\n💎 Valeurs : Compétences • Synergies • Intégrité • Innovation",
+    "theme": "Outils & Produits ECT",
+    "question": "À quoi sert l'outil PSA d'ECT ?",
+    "answer": "PSA est l'outil d'auto-évaluation des compétences des professionnels (notamment acheteurs) au regard des meilleures pratiques du métier.\n\nIl identifie précisément les écarts de compétences, puis sert de base à un plan de formation sur mesure (Certificat professionnel, Certificat pratique) pour faire monter vos équipes en compétences.\n\nPour en savoir plus ou l'essayer : commercial@ect.ci",
     "keywords": [
-      "vision",
-      "mission",
-      "valeurs",
-      "objectif",
-      "ambition",
-      "référence"
+      "psa",
+      "auto-évaluation",
+      "compétences",
+      "acheteur",
+      "évaluation compétences",
+      "plan de formation"
     ]
   },
   {
-    "theme": "Formation",
-    "question": "Quelles formations proposez-vous ?",
-    "answer": "ECT propose 80+ formations en 6 catégories :\n\n🎓 Certificats Professionnels — 15 parcours, 3 niveaux (30h/40h/50h)\n🛠️ Certificats Pratiques — 6 certificats, 40h\n🏢 Séminaires Intra/Inter — 15 séminaires, 2-3 jours\n📋 Formations à la Carte — 70+ thèmes, 1-5 jours\n🌍 Séminaires Internationaux — 11 programmes, 2-3 semaines\n🏆 Certifications PECB — 14 normes ISO\n\n🔗 https://catalogue-formations-ect-2026.netlify.app/\n📧 commercial@ect.ci\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50",
+    "theme": "Outils & Produits ECT",
+    "question": "Que propose l'outil ENVA d'ECT ?",
+    "answer": "ENVA est l'outil d'ECT dédié aux achats durables et responsables. Il vous aide à définir une stratégie d'achats durables et à intégrer des critères environnementaux et sociaux dans vos appels d'offres et votre sélection de fournisseurs.\n\nC'est le bon point de départ pour répondre aux enjeux RSE, réglementaires et d'image, tout en structurant une démarche d'achats responsables crédible.\n\nPour un accompagnement : commercial@ect.ci",
     "keywords": [
-      "formation",
-      "cours",
-      "programme",
-      "catalogue",
-      "types",
-      "offre",
-      "toutes les formations"
+      "enva",
+      "achats durables",
+      "achats responsables",
+      "rse",
+      "critères environnementaux",
+      "développement durable"
     ]
   },
   {
-    "theme": "Support",
-    "question": "Comment contacter ECT ?",
-    "answer": "Vous pouvez joindre ECT par les canaux suivants :\n\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50\n📧 ect@ect.ci | commercial@ect.ci\n🏢 Route de Bingerville, Quartier Ayopoumin — BP 1636 Abidjan 22\n🌐 www.ect.ci",
+    "theme": "Outils & Produits ECT",
+    "question": "C'est quoi Sectinel Upstream ?",
+    "answer": "Sectinel Upstream est l'outil d'ECT qui vous offre une visibilité précise et dynamique de votre flux amont, du fournisseur jusqu'à votre entreprise.\n\nIl vous aide à mieux comprendre, suivre et sécuriser vos approvisionnements en amont de la chaîne, pour anticiper les aléas et fiabiliser vos flux.\n\nPour une présentation détaillée : commercial@ect.ci",
     "keywords": [
-      "contact",
-      "joindre",
-      "téléphone",
-      "email",
-      "adresse",
-      "siège",
-      "rdv",
-      "rendez-vous"
+      "sectinel upstream",
+      "flux amont",
+      "visibilité",
+      "fournisseurs",
+      "approvisionnement amont",
+      "supply chain amont"
     ]
   },
   {
-    "theme": "Portage Salarial",
-    "question": "Quels sont les avantages du portage salarial ECT ?",
-    "answer": "🚀 Accès rapide à des compétences pointues — sans délais d'embauche classique\n\n🔧 Gestion simplifiée — formalités administratives, fiscales et juridiques prises en charge\n\n💰 Maîtrise budgétaire — vous ne payez que les prestations réalisées\n\n🎯 Évaluation facilitée — testez les compétences avant embauche définitive\n\n📧 commercial@ect.ci\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50",
+    "theme": "Outils & Produits ECT",
+    "question": "À quoi sert Sectinel i55 ?",
+    "answer": "Sectinel i55 est l'outil de gestion des actifs d'ECT, aligné sur l'approche normative ISO 55001. Il identifie, valorise et planifie le renouvellement de vos actifs de manière proactive.\n\nObjectif : maximiser la valeur de vos actifs sur tout leur cycle de vie tout en maîtrisant les coûts et les risques.\n\nPour un diagnostic Asset Management : commercial@ect.ci",
     "keywords": [
-      "avantage",
-      "bénéfice",
-      "portage",
-      "flexible",
-      "coût",
-      "embauche"
+      "sectinel i55",
+      "i55",
+      "gestion des actifs",
+      "asset management",
+      "iso 55001",
+      "cycle de vie",
+      "renouvellement actifs"
+    ]
+  },
+  {
+    "theme": "Outils & Produits ECT",
+    "question": "À quoi sert Sectinel i28 ?",
+    "answer": "Sectinel i28 est l'outil d'ECT qui facilite la mise en œuvre de mesures de sécurité tout au long de la Supply Chain, en s'appuyant sur le référentiel ISO 28000.\n\nIl vous aide à cartographier les vulnérabilités, formaliser votre politique de sûreté et bâtir un plan de mesures adapté pour protéger vos flux contre les menaces (vols, fraudes, intrusions, ruptures critiques).\n\nPour un accompagnement sûreté : commercial@ect.ci ou (+225) 21.50.00.41.57",
+    "keywords": [
+      "sectinel i28",
+      "i28",
+      "sûreté",
+      "sécurité supply chain",
+      "iso 28000",
+      "vulnérabilité",
+      "plan de sûreté"
+    ]
+  },
+  {
+    "theme": "Outils & Produits ECT",
+    "question": "C'est quoi l'outil SAFE Supplier ?",
+    "answer": "SAFE Supplier est l'outil de gestion des risques fournisseurs d'ECT, conçu selon une approche pragmatique.\n\nIl vous aide à cartographier, évaluer, prioriser et traiter vos risques fournisseurs pour sécuriser vos approvisionnements et renforcer la résilience de votre chaîne.\n\nPour découvrir l'outil : commercial@ect.ci",
+    "keywords": [
+      "safe supplier",
+      "risques fournisseurs",
+      "gestion des risques",
+      "évaluation fournisseurs",
+      "résilience",
+      "panel fournisseurs"
+    ]
+  },
+  {
+    "theme": "Outils & Produits ECT",
+    "question": "À quoi sert l'outil Stock Skills ?",
+    "answer": "Stock Skills est l'outil d'ECT qui évalue les compétences de vos gestionnaires de stocks et propose des plans de progrès personnalisés.\n\nIl cible précisément la montée en compétences là où elle est utile, pour fiabiliser vos inventaires, réduire les écarts et améliorer votre taux de rotation.\n\nPour en savoir plus : commercial@ect.ci",
+    "keywords": [
+      "stock skills",
+      "gestion des stocks",
+      "compétences gestionnaires",
+      "plan de progrès",
+      "inventaire",
+      "rotation des stocks"
+    ]
+  },
+  {
+    "theme": "Outils & Produits ECT",
+    "question": "C'est quoi l'outil KM d'ECT ?",
+    "answer": "KM (Knowledge Management) est l'outil d'ECT qui vous aide à identifier et préserver vos connaissances critiques, afin de pérenniser le savoir et le savoir-faire de votre entreprise.\n\nIl sécurise votre capital immatériel face aux départs, mobilités et pertes d'expertise, et facilite la transmission entre collaborateurs.\n\nPour un accompagnement : commercial@ect.ci",
+    "keywords": [
+      "km",
+      "knowledge management",
+      "gestion des connaissances",
+      "savoir-faire",
+      "capital immatériel",
+      "transmission"
     ]
   }
 ]

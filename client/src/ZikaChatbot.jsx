@@ -772,15 +772,69 @@ export default function ZikaChatbot() {
         }
         if (flowState.step === 3) {
           d.problematique = text;
-          setFlowState(null);
+          setFlowState({ type: "conseil_lead", step: 4, data: d });
           setIsLoading(true);
           const synthese = `• Secteur : ${d.secteur}\n• CA : ${d.ca}\n• Problématique : ${d.problematique}`;
           const reply = await callBackend(
-            `Un prospect a complété un diagnostic ECT :\n${synthese}\n\nRécapitule, propose un axe d'analyse et invite à prendre RDV.`,
+            `Un prospect ECT a complété un diagnostic :\n${synthese}\n\nEn tant qu'expert ECT, récapitule sa situation en 2-3 phrases, propose 2 axes d'amélioration concrets liés à son secteur et sa problématique (cite les bons outils ECT si pertinent), puis indique qu'un consultant va le recontacter.`,
             synthese
           );
           setIsLoading(false);
-          addMessage("bot", reply);
+          addMessage("bot",
+            reply + "\n\nPour finaliser votre demande, partagez-nous vos coordonnées :",
+            ["📝 Laisser mes coordonnées", "📞 Nous appeler directement"]
+          );
+          return;
+        }
+        if (flowState.step === 4) {
+          if (text === "📞 Nous appeler directement") {
+            setFlowState(null);
+            addMessage("bot",
+              "Notre équipe est disponible :\n\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50\n📧 commercial@ect.ci\n🌐 www.ect.ci\n\nMentionnez votre secteur (${flowState?.data?.secteur || ''}) pour un traitement prioritaire."
+            );
+            return;
+          }
+          if (text === "📝 Laisser mes coordonnées") {
+            setFlowState({ type: "conseil_lead", step: 5, data: d });
+            addMessage("bot", "Quel est votre prénom et nom ?");
+            return;
+          }
+        }
+        if (flowState.step === 5) {
+          d.nom = text;
+          setFlowState({ type: "conseil_lead", step: 6, data: d });
+          addMessage("bot", "Votre adresse email professionnelle ?");
+          return;
+        }
+        if (flowState.step === 6) {
+          d.email = text;
+          setFlowState({ type: "conseil_lead", step: 7, data: d });
+          addMessage("bot", "Votre numéro de téléphone ?");
+          return;
+        }
+        if (flowState.step === 7) {
+          d.telephone = text;
+          setFlowState(null);
+          // Envoyer le lead au backend
+          try {
+            await fetch("https://zika-chatbot.onrender.com/api/lead", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                nom: d.nom,
+                email: d.email,
+                telephone: d.telephone,
+                secteur: d.secteur,
+                ca: d.ca,
+                problematique: d.problematique,
+                source: "Parcours Conseil ZIKA",
+                date: new Date().toISOString(),
+              }),
+            });
+          } catch {}
+          addMessage("bot",
+            `Merci ${d.nom} ! ✅\n\nVotre demande a bien été enregistrée. Un consultant ECT vous contactera à ${d.email} ou au ${d.telephone} dans les 24h ouvrées.\n\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50\n📧 commercial@ect.ci`
+          );
           return;
         }
       }
@@ -935,8 +989,14 @@ export default function ZikaChatbot() {
       addMessage("bot", msg);
       return;
     }
-    // Mot-clé formation → afficher le menu des types
-    if (lower.match(/(^nos formations$|formation|séminaire|certificat|certif|apprendre|cours|programme|inscription|inscrire|pecb)/)) {
+    // Formation → seulement si bouton ou demande très explicite
+    const formationExplicite = (
+      text === "Nos formations" ||
+      lower === "nos formations" ||
+      lower.match(/^(voir|consulter|avoir|accéder).*(formation|catalogue)/) ||
+      lower.match(/^(je veux|je cherche|je souhaite).*(formation|me former|apprendre)/)
+    );
+    if (formationExplicite) {
       setFlowState({ type: "formation", step: 1, data: {} });
       addMessage("bot",
         "ECT propose 80+ formations dans le Catalogue 2026 !\n\nQuel type de formation vous intéresse ?",
@@ -965,6 +1025,13 @@ export default function ZikaChatbot() {
 
 
 
+    // WhatsApp direct
+    if (text === "💬 WhatsApp direct") {
+      window.open("https://wa.me/2250575985050?text=Bonjour%20ECT%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20services.", "_blank");
+      addMessage("bot", "WhatsApp ouvert ! Notre équipe vous répondra rapidement.\n\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50");
+      return;
+    }
+
     if (lower.match(/(portage|salarial|paie|bulletin|cnps|cmu|ressources humaines|rh externalisation)/)) {
       setFlowState({ type: "portage", step: 1, data: {} });
       addMessage("bot",
@@ -975,27 +1042,29 @@ export default function ZikaChatbot() {
     }
 
 
-    if (lower.match(/(contact|rdv|rendez.vous|appel|téléphone|joindre|parler)/)) {
+    if (text === "Nous contacter" || lower.match(/(^contact$|^nous contacter$|rdv|rendez.vous|joindre)/)) {
       addMessage("bot",
-        "Vous pouvez nous joindre par les canaux suivants :\n\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50\n📧 ect@ect.ci — commercial@ect.ci\n🏢 Route de Bingerville, Quartier Ayopoumin, Abidjan\n🌐 www.ect.ci"
+        "Vous pouvez nous joindre par les canaux suivants :\n\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50\n📧 ect@ect.ci — commercial@ect.ci\n💬 https://wa.me/2250575985050\n🏢 Route de Bingerville, Quartier Ayopoumin, Abidjan\n🌐 www.ect.ci"
       );
       return;
     }
 
-    // ── Fallback : FAQ enrichie + IA ────────────────────────────────────────
-    // Toutes les questions opérationnelles (stocks, logistique, achats, ISO...)
-    // sont traitées ici via la FAQ de 44 entrées + Claude en backup
+    // ── Fallback : toutes questions libres → FAQ 48 entrées + IA expert ────
     setIsLoading(true);
-    const reply = await callBackend(text);
+    // Transmettre les 3 derniers échanges pour contexte
+    const recentHistory = messages.slice(-6).map(m =>
+      `${m.role === "user" ? "Prospect" : "ZIKA"}: ${m.content}`
+    ).join("\n");
+    const reply = await callBackend(text, recentHistory);
     setIsLoading(false);
     const vagueKeywords = ["je ne sais pas", "je n'ai pas", "je suis désolé", "n'ai pas pu", "pas d'information", "cannot", "don't have"];
     const isVague = vagueKeywords.some(k => reply.toLowerCase().includes(k));
     if (isVague) {
       addMessage("bot",
-        "Pour cette question spécifique, nos consultants ECT sont les mieux placés pour vous répondre.\n\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50\n📧 commercial@ect.ci\n🌐 www.ect.ci"
+        "Pour cette question spécifique, nos consultants ECT sont les mieux placés pour vous répondre.\n\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50\n📧 commercial@ect.ci\n💬 https://wa.me/2250575985050",
+        ["📝 Laisser mes coordonnées", "💬 WhatsApp direct"]
       );
     } else {
-      // Ajouter les coordonnées si la réponse mentionne de contacter ECT
       const mentionneContact = reply.toLowerCase().includes("commercial@ect.ci") || reply.toLowerCase().includes("contactez");
       addMessage("bot", reply + (mentionneContact ? "" : "\n\n📞 (+225) 21.50.00.41.57 / 05.75.98.50.50\n📧 commercial@ect.ci"));
     }
