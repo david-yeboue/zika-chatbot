@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 
 const ECT_LOGO_URL = "/Logo_ect.png";
-const BACKEND_URL  = "https://zika-chatbot.onrender.com";
+const BACKEND_URL  = "https://zika-chatbot-1.onrender.com";
 
 // ─── Appel Backend ────────────────────────────────────────────────────────────
 async function callBackend(messages) {
