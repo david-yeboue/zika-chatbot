@@ -31,15 +31,33 @@ try {
 } catch (e) { console.error("FAQ non chargée :", e.message); }
 
 function findFAQMatch(userMsg) {
-  const lower = userMsg.toLowerCase();
+  const lower = userMsg.toLowerCase().trim();
   let best = null, bestScore = 0;
+
   for (const entry of faqData) {
     const kws = Array.isArray(entry.keywords)
       ? entry.keywords
       : (entry.keywords || "").toLowerCase().split(",").map(k => k.trim()).filter(Boolean);
-    let score = kws.filter(kw => lower.includes(kw)).length;
-    if (lower.includes(entry.question.toLowerCase().slice(0, 25))) score += 3;
-    if (score > bestScore && score >= 2) { bestScore = score; best = entry; }
+
+    let score = 0;
+
+    // Score par mots-clés
+    const kwMatches = kws.filter(kw => kw.length > 3 && lower.includes(kw));
+    score += kwMatches.length;
+
+    // Bonus fort si la question utilisateur ressemble à la question FAQ
+    const faqQ = entry.question.toLowerCase();
+    const faqWords = faqQ.replace(/[?]/g, "").split(/\s+/).filter(w => w.length > 3);
+    const userWords = lower.split(/\s+/).filter(w => w.length > 3);
+    const questionOverlap = faqWords.filter(w => userWords.includes(w)).length;
+    if (questionOverlap >= 3) score += 4;
+    else if (questionOverlap >= 2) score += 2;
+
+    // Seuil élevé : 5 minimum pour éviter les faux positifs
+    if (score > bestScore && score >= 5) {
+      bestScore = score;
+      best = entry;
+    }
   }
   return best;
 }
@@ -48,16 +66,21 @@ function getFAQContext(userMsg) {
   const lower = userMsg.toLowerCase();
   return faqData.map(e => {
     const kws = Array.isArray(e.keywords) ? e.keywords : (e.keywords || "").split(",").map(k => k.trim()).filter(Boolean);
-    return { e, score: kws.filter(kw => lower.includes(kw)).length };
-  }).filter(x => x.score > 0).sort((a, b) => b.score - a.score).slice(0, 4)
-    .map(x => `Q : ${x.e.question}\nR : ${x.e.answer}`).join("\n\n---\n\n");
+    const score = kws.filter(kw => kw.length > 3 && lower.includes(kw)).length;
+    return { e, score };
+  }).filter(x => x.score >= 2).sort((a, b) => b.score - a.score).slice(0, 3)
+    .map(x => `[Référence ECT — thème : ${x.e.theme}]\nQ : ${x.e.question}\nR : ${x.e.answer}`)
+    .join("\n\n---\n\n");
 }
 
 // ─── PROMPT SYSTÈME — EXPERT + COMMERCIAL ────────────────────────────────────
 const SYSTEM_PROMPT = `Tu es ZIKA, l'assistant expert d'Eburnis Conseil & Technologies (ECT).
 ECT est un cabinet d'audit, conseil et formation basé à Abidjan, spécialisé en Achats, Supply Chain, QHSE, Asset Management et Lean Management.
 
-══ RÈGLE ABSOLUE — DOUBLE RÔLE ══
+══ RÈGLE ABSOLUE N°1 — RÉPONDRE EXACTEMENT À LA QUESTION ══
+Lis attentivement la question. Réponds UNIQUEMENT à ce qui est demandé. Ne réponds pas à une autre question.
+
+══ RÈGLE N°2 — DOUBLE RÔLE ══
 1. EXPERT D'ABORD : réponds toujours RÉELLEMENT à la question posée.
    - Si on demande ce qu'est la matrice de Kraljic → explique-la clairement en 3-4 phrases.
    - Si on demande la différence entre CAIP et CAIM → explique-la.
@@ -124,7 +147,7 @@ app.post("/api/chat", async (req, res) => {
     // 2. Enrichir le système avec les entrées FAQ pertinentes (RAG niveau 1)
     const faqCtx = getFAQContext(lastUserMsg);
     const systemWithCtx = faqCtx
-      ? `${SYSTEM_PROMPT}\n\n══ DONNÉES FAQ ECT PERTINENTES (source de vérité) ══\n${faqCtx}`
+      ? `${SYSTEM_PROMPT}\n\n══ RÉFÉRENCES ECT PERTINENTES (utilise UNIQUEMENT si la question porte sur ce sujet) ══\n${faqCtx}\n\nATTENTION : Ces références ne sont là qu'en appui. Réponds toujours DIRECTEMENT à ce que l'utilisateur a demandé.`
       : SYSTEM_PROMPT;
 
     // 3. Appel Claude avec historique complet
