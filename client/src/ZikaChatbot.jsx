@@ -69,28 +69,120 @@ const QUICK_ACTIONS = [
   { label: "Nous contacter",      desc: "RDV, téléphone & WhatsApp",        icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.07 6.07l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> },
 ];
 
-// ─── Formatage texte avec liens cliquables ───────────────────────────────────
-function renderLineWithLinks(line) {
-  const urlRegex = /(https?:\/\/[^\s]+)/g;
-  const parts = line.split(urlRegex);
-  return parts.map((part, idx) => {
-    if (/^https?:\/\//.test(part)) {
-      return <a key={idx} href={part} target="_blank" rel="noopener noreferrer" style={{ color: "#E8690B", textDecoration: "underline", wordBreak: "break-all" }}>{part}</a>;
-    }
-    return <span key={idx}>{part}</span>;
-  });
+// ─── Rendu Markdown complet ──────────────────────────────────────────────────
+function parseInline(text) {
+  // Gras, italique, liens, URLs
+  const parts = [];
+  const regex = /(\*\*(.+?)\*\*|\*(.+?)\*|`(.+?)`|\[([^\]]+)\]\((https?:\/\/[^\)]+)\)|(https?:\/\/[^\s\)]+))/g;
+  let last = 0, m;
+  while ((m = regex.exec(text)) !== null) {
+    if (m.index > last) parts.push(<span key={last}>{text.slice(last, m.index)}</span>);
+    if (m[2]) parts.push(<strong key={m.index} style={{ fontWeight: 700 }}>{m[2]}</strong>);
+    else if (m[3]) parts.push(<em key={m.index}>{m[3]}</em>);
+    else if (m[4]) parts.push(<code key={m.index} style={{ background:"#F3F0EC", borderRadius:4, padding:"1px 5px", fontSize:"0.88em", fontFamily:"monospace" }}>{m[4]}</code>);
+    else if (m[5]) parts.push(<a key={m.index} href={m[6]} target="_blank" rel="noopener noreferrer" style={{ color:"#E8690B", textDecoration:"underline" }}>{m[5]}</a>);
+    else if (m[7]) parts.push(<a key={m.index} href={m[7]} target="_blank" rel="noopener noreferrer" style={{ color:"#E8690B", textDecoration:"underline", wordBreak:"break-all" }}>{m[7]}</a>);
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) parts.push(<span key={last}>{text.slice(last)}</span>);
+  return parts.length > 0 ? parts : text;
 }
 
 function formatText(text) {
-  return text.split("\n").map((line, i) => {
-    if (line.trim() === "") return <div key={i} style={{ height: 8 }} />;
-    const hasUrl = line.includes("http");
-    return (
-      <div key={i} style={{ marginBottom: 3, lineHeight: 1.65, paddingLeft: line.startsWith("•") ? 4 : 0 }}>
-        {hasUrl ? renderLineWithLinks(line) : line}
+  const lines = text.split("\n");
+  const elements = [];
+  let i = 0;
+
+  while (i < lines.length) {
+    const line = lines[i];
+    const trim = line.trim();
+
+    // Ligne vide
+    if (trim === "") { elements.push(<div key={i} style={{ height: 6 }} />); i++; continue; }
+
+    // Séparateur ---
+    if (/^-{3,}$/.test(trim)) {
+      elements.push(<hr key={i} style={{ border:"none", borderTop:"1.5px solid #EDEAE6", margin:"10px 0" }} />);
+      i++; continue;
+    }
+
+    // Titre ## ou ###
+    if (trim.startsWith("### ")) {
+      elements.push(<div key={i} style={{ fontWeight:700, fontSize:"13px", color:"#E8690B", margin:"10px 0 4px", letterSpacing:"0.3px" }}>{parseInline(trim.slice(4))}</div>);
+      i++; continue;
+    }
+    if (trim.startsWith("## ")) {
+      elements.push(<div key={i} style={{ fontWeight:800, fontSize:"14px", color:"#1a1a1a", margin:"12px 0 5px", borderLeft:"3px solid #E8690B", paddingLeft:8 }}>{parseInline(trim.slice(3))}</div>);
+      i++; continue;
+    }
+    if (trim.startsWith("# ")) {
+      elements.push(<div key={i} style={{ fontWeight:800, fontSize:"15px", color:"#1a1a1a", margin:"10px 0 6px" }}>{parseInline(trim.slice(2))}</div>);
+      i++; continue;
+    }
+
+    // Tableau |...|
+    if (trim.startsWith("|") && trim.endsWith("|")) {
+      const rows = [];
+      let j = i;
+      while (j < lines.length && lines[j].trim().startsWith("|")) {
+        rows.push(lines[j]);
+        j++;
+      }
+      const isHeader = rows.length > 1 && /^\|[-|: ]+\|$/.test(rows[1].trim());
+      const dataRows = isHeader ? [rows[0], ...rows.slice(2)] : rows;
+      elements.push(
+        <div key={i} style={{ overflowX:"auto", margin:"8px 0" }}>
+          <table style={{ width:"100%", borderCollapse:"collapse", fontSize:"12px" }}>
+            <tbody>
+              {dataRows.map((row, ri) => {
+                const cells = row.trim().replace(/^\||\|$/g, "").split("|").map(c => c.trim());
+                const isHdr = isHeader && ri === 0;
+                return (
+                  <tr key={ri} style={{ background: ri % 2 === 0 ? "#FFF" : "#FFF8F2" }}>
+                    {cells.map((cell, ci) => {
+                      const Tag = isHdr ? "th" : "td";
+                      return <Tag key={ci} style={{ border:"1px solid #EDEAE6", padding:"6px 10px", fontWeight:isHdr?700:400, background:isHdr?"#FFF3EB":"transparent", textAlign:"left" }}>{parseInline(cell)}</Tag>;
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      );
+      i = j; continue;
+    }
+
+    // Liste * ou - ou •
+    if (/^[*\-•]\s/.test(trim)) {
+      const items = [];
+      let j = i;
+      while (j < lines.length && /^[*\-•]\s/.test(lines[j].trim())) {
+        items.push(lines[j].trim().replace(/^[*\-•]\s/, ""));
+        j++;
+      }
+      elements.push(
+        <ul key={i} style={{ margin:"6px 0", paddingLeft:16, listStyle:"none" }}>
+          {items.map((item, ii) => (
+            <li key={ii} style={{ display:"flex", gap:6, marginBottom:4, lineHeight:1.6 }}>
+              <span style={{ color:"#E8690B", flexShrink:0, marginTop:2 }}>▸</span>
+              <span>{parseInline(item)}</span>
+            </li>
+          ))}
+        </ul>
+      );
+      i = j; continue;
+    }
+
+    // Texte normal
+    elements.push(
+      <div key={i} style={{ marginBottom:3, lineHeight:1.7 }}>
+        {parseInline(trim)}
       </div>
     );
-  });
+    i++;
+  }
+  return elements;
 }
 
 // ─── Logo ECT ─────────────────────────────────────────────────────────────────
