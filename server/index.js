@@ -183,14 +183,34 @@ app.post("/api/lead", async (req, res) => {
 
     // Email de notification si SMTP configuré
     if (process.env.SMTP_HOST) {
-      const { default: nodemailer } = await import("nodemailer");
-      const t = nodemailer.createTransport({ host: process.env.SMTP_HOST, port: 587, auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS } });
-      await t.sendMail({
-        from: `"ZIKA ECT" <${process.env.SMTP_USER}>`,
-        to: process.env.LEAD_EMAIL || "commercial@ect.ci",
-        subject: `[ZIKA] Nouveau lead : ${nom}`,
-        text: `Nom: ${nom}\nEmail: ${email}\nTél: ${telephone}\nSecteur: ${secteur}\nCA: ${ca}\nProblème: ${problematique}\nSource: ${source}\nDate: ${date}`,
-      });
+      try {
+        const { default: nodemailer } = await import("nodemailer");
+        const port = parseInt(process.env.SMTP_PORT || "465");
+        const t = nodemailer.createTransport({
+          host: process.env.SMTP_HOST,
+          port,
+          secure: port === 465, // true pour le port 465 (SSL), false pour 587 (STARTTLS)
+          auth: {
+            user: process.env.SMTP_USER,
+            pass: process.env.SMTP_PASS
+          }
+        });
+
+        await t.sendMail({
+          from: `"ZIKA ECT" <${process.env.SMTP_USER}>`,
+          to: process.env.LEAD_EMAIL || "commercial@ect.ci",
+          subject: `[ZIKA] Nouveau lead : ${nom}`,
+          text: `Nom: ${nom}\nEmail: ${email}\nTél: ${telephone}\nSecteur: ${secteur}\nCA: ${ca}\nProblème: ${problematique}\nSource: ${source}\nDate: ${date}`,
+        });
+
+        console.log(`[MAIL] Notification envoyée à ${process.env.LEAD_EMAIL || "commercial@ect.ci"} pour le lead ${nom}`);
+      } catch (mailErr) {
+        // On log l'erreur mail précisément, mais on ne fait pas échouer la requête :
+        // le lead est déjà loggé ci-dessus, on ne veut pas le perdre côté utilisateur.
+        console.error("[ERROR SMTP]", mailErr.message);
+      }
+    } else {
+      console.warn("[WARN] SMTP_HOST non configuré — aucun email de notification envoyé pour ce lead.");
     }
 
     res.json({ success: true });
